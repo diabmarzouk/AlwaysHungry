@@ -1,11 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
     <TextView
-        android:id="@+id/Ihave"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="I have..."/>
+        app:layout_constraintBottom_toTopOf="@+id/meats"
+        android:text= "I have ..."
+        android:textStyle="bold"
+        android:textSize="30dp"/>
+
+    <TextView
+        android:id="@+id/meats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/meatListView"
+        android:text= "Meats"
+        android:textSize="10dp"/>
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/vegetables"
+        android:id="@+id/meatListView"/>
+
+    <TextView
+        android:id="@+id/vegetables"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/meatListView"
+        android:text= "Vegetables"
+        android:textSize="10dp"/>
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/dairy"
+        android:id="@+id/vegetablesListView"/>
+    <TextView
+        android:id="@+id/dairy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/vegetablesListView"
+        android:text= "Dairy"
+        android:textSize="10dp"/>
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/dairy"
+        android:id="@+id/dairyListView"/>
+    <TextView
+        android:id="@+id/other"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/dairyListView"
+        android:text= "Other"
+        android:textSize="10dp"/>
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/other"
+        android:id="@+id/otherListView"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
