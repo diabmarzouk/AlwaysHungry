@@ -4,6 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/add_fragment.xml" value="0.1390625" />
+        <entry key="app/src/main/res/layout/smart_fridge_manager.xml" value="0.1390625" />
+        <entry key="app/src/main/res/layout/user_information.xml" value="0.15416666666666667" />
+        <entry key="app/src/main/res/layout/userinformation.xml" value="0.1390625" />
+        <entry key="app/src/main/res/layout/welcome_screen.xml" value="0.15520833333333334" />
       </map>
     </option>
   </component>
