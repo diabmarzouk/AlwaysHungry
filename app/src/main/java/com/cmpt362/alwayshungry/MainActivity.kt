@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         textView = findViewById(R.id.firstTextView)
-        textView.text = "My name is HAYATO"
+        textView.text = "My name is OMAR"
 
     }
 }
