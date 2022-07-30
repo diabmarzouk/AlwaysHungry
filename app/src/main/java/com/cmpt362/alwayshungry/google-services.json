@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "373819431492",
+    "project_id": "alwayshungry-662e2",
+    "storage_bucket": "alwayshungry-662e2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:373819431492:android:8fb3a4755e4d480991ba11",
+        "android_client_info": {
+          "package_name": "com.cmpt362.alwayshungry"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "373819431492-t7so72s2ogt9kf1dps824d58jvgdc17t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFrTl12_iP7teSndtYtKck8unbhIWn2Ho"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "373819431492-t7so72s2ogt9kf1dps824d58jvgdc17t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
