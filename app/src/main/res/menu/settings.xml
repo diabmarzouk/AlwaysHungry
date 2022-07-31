@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:title="Settings"
-        android:id="@+id/menuSettings"/>
+        android:id="@+id/menuSettings"
+        android:actionLayout="@layout/settings_layout"
+        android:title="Settings" />
 </menu>

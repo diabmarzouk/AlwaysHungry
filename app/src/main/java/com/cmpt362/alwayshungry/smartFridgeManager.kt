@@ -1,17 +1,25 @@
 package com.cmpt362.alwayshungry
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.view.Menu
 import android.view.MenuInflater
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class smartFridgeManager : AppCompatActivity() {
+
+    // create Firebase authentication object
+    private lateinit var authObj: FirebaseAuth
 
     private val TAB_TEXT = arrayOf("ADD", "ITEMS", "RECIPES")
 
@@ -23,6 +31,8 @@ class smartFridgeManager : AppCompatActivity() {
     private lateinit var tab: TabLayout
     private lateinit var viewPager: ViewPager2
 
+    var menuId : Int = 0
+
     private lateinit var myFragmentStateAdapter: FragmentStateAdapter
     private lateinit var tabLayoutMediator: TabLayoutMediator
     private lateinit var tabConfigurationStrategy: TabLayoutMediator.TabConfigurationStrategy
@@ -32,6 +42,12 @@ class smartFridgeManager : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.smart_fridge_manager)
+
+        // Load users data from Firestore
+        authObj = Firebase.auth
+
+        val user = FirebaseAuth.getInstance().currentUser
+//        user.uid
 
         addFragment = addFragment()
         itemsFragment = itemsFragment()
@@ -63,6 +79,18 @@ class smartFridgeManager : AppCompatActivity() {
         inflater.inflate(R.menu.settings, menu)
         return true
     }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        menuId = item.itemId
+
+        when{
+            menuId == R.id.menuSettings -> startActivity(Intent(this, settingsActivity::class.java))
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
 
 
 }

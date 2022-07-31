@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.cmpt362.alwayshungry.R
+import com.cmpt362.alwayshungry.smartFridgeManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -43,6 +44,7 @@ class LoginActivity : AppCompatActivity() {
             email = emailET.text.toString()
             password = passwordET.text.toString()
             signIn(email, password)
+
         }
 
         signUpBtn.setOnClickListener{
@@ -71,11 +73,14 @@ class LoginActivity : AppCompatActivity() {
                     Log.d(ContentValues.TAG, "signInWithEmail:success")
                     val user = authObj.currentUser
 
+                    val intent = Intent(this, smartFridgeManager::class.java)
+                    startActivity(intent)
+
 //                    updateUI(user)
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(ContentValues.TAG, "signInWithEmail:failure", task.exception)
-                    Toast.makeText(baseContext, "Authentication failed.",
+                    Toast.makeText(baseContext, "Your email and password combination is incorrect.",
                         Toast.LENGTH_SHORT).show()
 //                    updateUI(null)
                 }

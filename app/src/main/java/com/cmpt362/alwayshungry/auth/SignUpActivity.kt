@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.cmpt362.alwayshungry.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class SignUpActivity : AppCompatActivity() {
@@ -72,12 +73,19 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun createAccount(email: String, password: String){
+
+        val db = Firebase.firestore
+
         authObj.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "createUserWithEmail:success")
                     val user = authObj.currentUser
+
+                    if (user != null) {
+                        db.collection("items").document(user.uid)
+                    }
 
                    // updateUI is a function that might be implemented later
 //                    updateUI(user)
