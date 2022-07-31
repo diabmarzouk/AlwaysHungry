@@ -23,6 +23,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".auth.SignUpActivity"/>
+        <activity android:name=".auth.LoginActivity"/>
         <activity android:name=".userInfo"/>
         <activity android:name=".welcomePreferences"/>
         <activity android:name=".smartFridgeManager"/>
