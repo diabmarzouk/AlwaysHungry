@@ -84,7 +84,7 @@ class SignUpActivity : AppCompatActivity() {
                     val user = authObj.currentUser
 
                     if (user != null) {
-                        db.collection("items").document(user.uid)
+                        db.collection("users").document(user.uid).collection("items").document()
                     }
 
                    // updateUI is a function that might be implemented later
