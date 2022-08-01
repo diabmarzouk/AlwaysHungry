@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.cmpt362.alwayshungry.R
+import com.cmpt362.alwayshungry.smartFridgeManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
@@ -85,6 +86,8 @@ class SignUpActivity : AppCompatActivity() {
 
                     if (user != null) {
                         db.collection("users").document(user.uid).collection("items").document().set("" to "")
+                        val intent = Intent(this, smartFridgeManager::class.java)
+                        startActivity(intent)
                     }
 
                    // updateUI is a function that might be implemented later
