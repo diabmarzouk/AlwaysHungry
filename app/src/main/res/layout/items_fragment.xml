@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/meatListView"
         android:text= "Meats"
-        android:textSize="10dp"/>
+        android:textSize="30dp"/>
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -31,7 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Vegetables"
-        android:textSize="10dp"
+        android:textSize="30dp"
         app:layout_constraintBottom_toTopOf="@+id/vegetablesListView"
         tools:layout_editor_absoluteX="0dp" />
 
@@ -46,7 +46,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/dairyListView"
         android:text= "Dairy"
-        android:textSize="10dp"/>
+        android:textSize="30dp"/>
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -58,7 +58,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/dairy"
         android:text= "Other"
-        android:textSize="10dp"/>
+        android:textSize="30dp"/>
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

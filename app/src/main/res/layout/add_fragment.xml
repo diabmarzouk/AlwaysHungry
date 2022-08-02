@@ -30,7 +30,24 @@
         android:layout_height="wrap_content"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="125dp"
-        app:layout_constraintBottom_toTopOf="@+id/quantityText" />
+        app:layout_constraintBottom_toTopOf="@+id/itemText" />
+    <TextView
+        android:id="@+id/itemText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Items"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="207dp"
+        app:layout_constraintBottom_toTopOf="@+id/itemSpinner" />
+
+    <Spinner
+        android:id="@+id/itemSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="243dp"
+        app:layout_constraintBottom_toTopOf="@+id/quantityText"
+        />
 
     <TextView
         android:id="@+id/quantityText"
