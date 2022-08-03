@@ -1,25 +1,21 @@
 package com.cmpt362.alwayshungry
 
 import android.app.DatePickerDialog
-import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
-import androidx.core.view.get
-import androidx.core.view.marginRight
-import androidx.core.view.marginTop
 import androidx.fragment.app.Fragment
 import com.cmpt362.alwayshungry.auth.MyDialog
 import com.cmpt362.alwayshungry.auth.MyDialog.Companion.Category_DIALOG
 import com.cmpt362.alwayshungry.auth.MyDialog.Companion.DIALOG_KEY
-import com.cmpt362.alwayshungry.auth.MyDialog.Companion.otherCategory
 import java.util.*
+
 
 class addFragment : Fragment(),DatePickerDialog.OnDateSetListener {
 
@@ -44,6 +40,8 @@ class addFragment : Fragment(),DatePickerDialog.OnDateSetListener {
     private lateinit var unitText :TextView
     private lateinit var unitSpinner :Spinner
     private lateinit var dateText :TextView
+    private lateinit var addItemBtn :Button
+
 
 
 
@@ -168,6 +166,13 @@ class addFragment : Fragment(),DatePickerDialog.OnDateSetListener {
                             ViewGroup.LayoutParams.MATCH_PARENT,
                             ViewGroup.LayoutParams.WRAP_CONTENT)
                         linearLayout?.addView(dialogText)
+
+                        //add Item button
+                        addItemBtn = Button(context)
+                        addItemBtn.layoutParams = LinearLayout.LayoutParams(
+                            ViewGroup.LayoutParams.WRAP_CONTENT,
+                            ViewGroup.LayoutParams.WRAP_CONTENT)
+                        linearLayout?.addView(addItemBtn)
 
                         firstTimeFlag = false
                     }
@@ -332,6 +337,30 @@ class addFragment : Fragment(),DatePickerDialog.OnDateSetListener {
                         )
                         datePickerDialog.show()
                     }
+
+
+                    //add Item button
+                    addItemBtn.text="Add Item"
+                    addItemBtn.setTextSize(20F)
+                    addItemBtn.setBackgroundColor(ContextCompat.getColor(requireContext(),R.color.myBrown))
+                    addItemBtn.setTextColor(ContextCompat.getColor(requireContext(),R.color.background))
+                    addItemBtn.setPadding(70,10,70,10)
+                    //set margins
+                    val param = addItemBtn.layoutParams as ViewGroup.MarginLayoutParams
+                    param.setMargins(50,50,20,20)
+                    addItemBtn.layoutParams = param
+                    addItemBtn.gravity = Gravity.CENTER_HORIZONTAL
+                    addItemBtn.gravity = Gravity.CENTER_VERTICAL
+                    addItemBtn.setOnClickListener {
+                        if(items.selectedItem == "Choose a meat" || items.selectedItem == "Choose a vegetable" || items.selectedItem == "Choose a dairy" ){
+                            //ask user to choose them before adding the item
+                        }
+                    }
+
+
+
+
+
                 }
             }
 
