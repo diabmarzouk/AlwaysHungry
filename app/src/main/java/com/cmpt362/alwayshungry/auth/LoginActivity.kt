@@ -55,34 +55,30 @@ class LoginActivity : AppCompatActivity() {
         //Initialize auth object
         authObj = Firebase.auth
 
-        //... Here we create an activity that will show when the user needs to login
-        //      to the app. If they know they already have an account, they can try
-        //      to login by inserting their email and password.
-
-        //************ SUGGESTION ***************
-        //  We can probably get away with just using "Login with Google" and avoid
-        //      having to store data on our own. Will look further into it.
-
     }
 
     private fun signIn(email: String, password: String){
         authObj.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    Log.d(ContentValues.TAG, "signInWithEmail:success")
-                    val user = authObj.currentUser
 
-                    val intent = Intent(this, smartFridgeManager::class.java)
-                    startActivity(intent)
+                    if(authObj.currentUser!!.isEmailVerified){
+                        // Sign in success, update UI with the signed-in user's information
+                        Log.d(ContentValues.TAG, "signInWithEmail:success")
 
-//                    updateUI(user)
+                        val intent = Intent(this, smartFridgeManager::class.java)
+                        startActivity(intent)
+
+                    }else{
+                        Toast.makeText(baseContext, "Your email has not been verified. Please check your email.",
+                            Toast.LENGTH_SHORT).show()
+                    }
+
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(ContentValues.TAG, "signInWithEmail:failure", task.exception)
                     Toast.makeText(baseContext, "Your email and password combination is incorrect.",
                         Toast.LENGTH_SHORT).show()
-//                    updateUI(null)
                 }
             }
     }

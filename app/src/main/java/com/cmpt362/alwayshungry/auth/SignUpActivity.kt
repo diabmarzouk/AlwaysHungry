@@ -9,7 +9,6 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.cmpt362.alwayshungry.R
-import com.cmpt362.alwayshungry.smartFridgeManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
@@ -23,18 +22,24 @@ class SignUpActivity : AppCompatActivity() {
     //XML layout variables
     private lateinit var emailET: EditText
     private lateinit var passwordET: EditText
+    private lateinit var confirmPassET: EditText
+    private lateinit var displayNameET: EditText
     private lateinit var signUpBtn : Button
     private lateinit var loginBtn: Button
 
     //Variables
     private lateinit var email : String
     private lateinit var password: String
+    private lateinit var conPassword: String
+    private lateinit var displayName: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.signup_activity)
         emailET = findViewById(R.id.signUpEmail)
         passwordET = findViewById(R.id.signUpPassword)
+        confirmPassET = findViewById(R.id.signUpPasswordConfirm)
+        displayNameET = findViewById(R.id.signUpNameET)
         signUpBtn = findViewById(R.id.signUpContinueBtn)
         loginBtn = findViewById(R.id.signUpLoginBtn)
 
@@ -49,7 +54,15 @@ class SignUpActivity : AppCompatActivity() {
         signUpBtn.setOnClickListener {
             email = emailET.text.toString()
             password = passwordET.text.toString()
-            createAccount(email, password)
+            conPassword = confirmPassET.text.toString()
+            displayName = displayNameET.text.toString()
+            if(password != conPassword){
+                Toast.makeText(baseContext, "Passwords do not match.",
+                    Toast.LENGTH_SHORT).show()
+            }else{
+                createAccount(email, password, displayName)
+            }
+
 
         }
 
@@ -61,44 +74,31 @@ class SignUpActivity : AppCompatActivity() {
 
     public override fun onStart() {
         super.onStart()
-
-
-        // No need to check if currUser is null because we already did this in MainActivity
-//        val currUser = authObj.currentUser
-//        if(currUser != null){
-
-            // Reload function will reload the activity so that the user gets send to the login screen
-//            reload()
-//        }
-
     }
 
-    private fun createAccount(email: String, password: String){
+    private fun createAccount(email: String, password: String, name: String){
 
         val db = Firebase.firestore
 
-        authObj.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this) { task ->
+        authObj.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-                    Log.d(TAG, "createUserWithEmail:success")
-                    val user = authObj.currentUser
+                    authObj.currentUser!!.sendEmailVerification().addOnCompleteListener { task ->
+                        Log.d(TAG, "createUserWithEmail:success")
+                        val user = authObj.currentUser
+                        if (user != null) {
+                            db.collection("users").document(user.uid).collection("items").document().set("" to "")
+                            val intent = Intent(this, LoginActivity::class.java)
+                            startActivity(intent)
+                        }
 
-                    if (user != null) {
-                        db.collection("users").document(user.uid).collection("items").document().set("" to "")
-                        val intent = Intent(this, smartFridgeManager::class.java)
-                        startActivity(intent)
                     }
-
-                   // updateUI is a function that might be implemented later
-//                    updateUI(user)
 
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "createUserWithEmail:failure", task.exception)
                     Toast.makeText(baseContext, "Authentication failed.",
                         Toast.LENGTH_SHORT).show()
-//                    updateUI(null)
                 }
             }
     }
