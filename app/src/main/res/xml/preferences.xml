@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="Account Setting"
+        >
+
+<!--        <Preference-->
+<!--            android:title="Name, Email, Class, etc"-->
+<!--            android:summary="User Profile"-->
+<!--            android:key ="edit_pref1"-->
+
+<!--            />-->
+        <EditTextPreference
+            android:title="e-mail"
+            android:summary="change email"
+            android:key="email_pref"/>
+        <EditTextPreference
+            android:title="password"
+            android:summary="change password"
+            android:key="password_pref"/>
+<!--        <EditTextPreference-->
+<!--            android:title="Comments"-->
+<!--            android:summary="Please enter your comments"-->
+<!--            android:key="comment_pref"/>-->
+<!--        <TextView-->
+<!--            android:width = "wrap_content"-->
+<!--            android:height = "wrap_content"-->
+<!--            android:text  = "Hayato"/>-->
+
+<!--        <CheckBoxPreference-->
+<!--            android:key = "privacy_setting"-->
+<!--            android:title = "Privacy Setting"-->
+<!--            android:summary="Posting your records anonymously"/>-->
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Additional Settings"
+        >
+        <Preference
+            android:title="Logout"
+            android:key="logoutButton"
+            android:summary="click to logout"
+            />
+<!--        <ListPreference-->
+<!--            android:title="Unit Preference"-->
+<!--            android:summary="Select the units"-->
+<!--            android:key ="edit_pref2"/>-->
+
+    </PreferenceCategory>
+</PreferenceScreen>

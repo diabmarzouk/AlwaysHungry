@@ -16,6 +16,8 @@
         <entry key="..\:/CMPT362_Final_Group_Project/app/src/main/res/layout/welcome_preferences.xml" value="0.33" />
         <entry key="..\:/CMPT362_Final_Group_Project/app/src/main/res/layout/welcome_screen.xml" value="0.33" />
         <entry key="..\:/CMPT362_Final_Group_Project/app/src/main/res/menu/settings.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/settings_layout.xml" value="0.1" />
+        <entry key="app/src/main/res/xml/preferences.xml" value="0.1490036231884058" />
       </map>
     </option>
   </component>
