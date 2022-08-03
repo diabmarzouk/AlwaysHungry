@@ -5,34 +5,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:id="@+id/constraint">
+    android:id="@+id/constraint"
+    android:background="@color/background">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
+        android:padding="12dp"
+        android:layout_marginBottom="15dp"
         android:text="What's in your fridge?"
-        android:textSize="30dp"
+        android:textSize="40dp"
         android:textStyle="bold"
-        android:textColor="@color/black"
-        tools:layout_editor_absoluteX="0dp" />
+        android:textColor="@color/white"
+        tools:layout_editor_absoluteX="0dp"
+        android:background="@color/myBrown"
+        android:textAlignment="center"/>
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Category"
-        android:textColor="@color/black"
-        tools:layout_editor_absoluteX="0dp" />
+        android:textStyle="bold"
+        android:textColor="@color/myBrown"
+        android:textSize="20dp" />
 
     <Spinner
         android:id="@+id/categorySpinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="125dp" />
-
-
-
-
+        android:textAlignment="textStart"
+        android:layout_margin="@dimen/cardview_default_radius"
+        android:background="@color/white"
+        android:padding="5dp" />
 </LinearLayout>
