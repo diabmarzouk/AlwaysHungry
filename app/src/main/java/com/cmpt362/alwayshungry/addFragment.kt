@@ -14,6 +14,10 @@ import androidx.fragment.app.Fragment
 import com.cmpt362.alwayshungry.auth.MyDialog
 import com.cmpt362.alwayshungry.auth.MyDialog.Companion.Category_DIALOG
 import com.cmpt362.alwayshungry.auth.MyDialog.Companion.DIALOG_KEY
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import java.util.*
 
 
@@ -41,6 +45,10 @@ class addFragment : Fragment(),DatePickerDialog.OnDateSetListener {
     private lateinit var unitSpinner :Spinner
     private lateinit var dateText :TextView
     private lateinit var addItemBtn :Button
+
+
+    private lateinit var authObj: FirebaseAuth
+
 
 
 
@@ -355,6 +363,18 @@ class addFragment : Fragment(),DatePickerDialog.OnDateSetListener {
                         if(items.selectedItem == "Choose a meat" || items.selectedItem == "Choose a vegetable" || items.selectedItem == "Choose a dairy" ){
                             //ask user to choose them before adding the item
                         }
+
+                        //data base
+                        authObj = Firebase.auth
+                        val db = Firebase.firestore
+                        val user = authObj.currentUser
+                        //my thoughts:
+                        //have an array for each item
+                        // if it's chicken go to chicken array and add an entry of [amount#unit#date]
+                        //for each array set 1.how many days there are good for 2.how many calories pe gram this array has
+
+
+
                     }
 
 
