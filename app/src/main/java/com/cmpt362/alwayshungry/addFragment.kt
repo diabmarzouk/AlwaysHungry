@@ -515,6 +515,18 @@ class addFragment : Fragment(){
                                 }
                             } else if (categorySpinner.selectedItem.toString() == "Vegetables") {
                                 //do vegetables
+                                if (items.selectedItem.toString() == "Asparagus") {
+                                    var asparagus = mutableMapOf<String, String>()
+
+                                    asparagus["Quantity"] = amountEditText.text.toString()
+                                    asparagus["Unit"] = unitSpinner.selectedItem.toString()
+                                    asparagus["Date"] = dialogText.text.toString()
+
+                                    db.collection("users").document(user!!.uid)
+                                        .collection("items").document("Vegetables")
+                                        .update("Asparagus", FieldValue.arrayUnion(asparagus))
+
+                                }
                             } else if (categorySpinner.selectedItem.toString() == "Dairy") {
                                 //do dairy
                                  if (items.selectedItem.toString() == "Milk") {
