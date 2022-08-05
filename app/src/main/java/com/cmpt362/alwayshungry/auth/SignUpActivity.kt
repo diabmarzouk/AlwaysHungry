@@ -87,7 +87,13 @@ class SignUpActivity : AppCompatActivity() {
                         Log.d(TAG, "createUserWithEmail:success")
                         val user = authObj.currentUser
                         if (user != null) {
+
+
+
                             db.collection("users").document(user.uid).collection("items").document().set("" to "")
+
+
+
                             val intent = Intent(this, LoginActivity::class.java)
                             startActivity(intent)
                         }

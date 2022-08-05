@@ -16,9 +16,11 @@ import com.cmpt362.alwayshungry.auth.MyDialog.Companion.Category_DIALOG
 import com.cmpt362.alwayshungry.auth.MyDialog.Companion.DIALOG_KEY
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class addFragment : Fragment(),DatePickerDialog.OnDateSetListener {
@@ -373,7 +375,14 @@ class addFragment : Fragment(),DatePickerDialog.OnDateSetListener {
                         // if it's chicken go to chicken array and add an entry of [amount#unit#date]
                         //for each array set 1.how many days there are good for 2.how many calories pe gram this array has
 
+                        var lamb = mutableMapOf<String, String>()
 
+                        lamb["Quantity"] = "5"
+                        lamb["Unit"] = "Grams"
+                        lamb["Date"] = "May 11, 2022"
+
+                        db.collection("users").document(user!!.uid)
+                            .collection("items").document("meat").set(lamb)
 
                     }
 
