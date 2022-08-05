@@ -16,6 +16,7 @@ import com.cmpt362.alwayshungry.auth.MyDialog.Companion.Category_DIALOG
 import com.cmpt362.alwayshungry.auth.MyDialog.Companion.DIALOG_KEY
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -379,10 +380,14 @@ class addFragment : Fragment(),DatePickerDialog.OnDateSetListener {
 
                         lamb["Quantity"] = "5"
                         lamb["Unit"] = "Grams"
-                        lamb["Date"] = "May 11, 2022"
+                        lamb["Date"] = "May 12, 2022"
+
+//                        db.collection("users").document(user!!.uid)
+//                            .collection("items").document("meat").set(hashMapOf("Lamb" to FieldValue.arrayUnion(lamb)))
 
                         db.collection("users").document(user!!.uid)
-                            .collection("items").document("meat").set(lamb)
+                            .collection("items").document("meat")
+                            .update("Lamb", FieldValue.arrayUnion(lamb))
 
                     }
 
