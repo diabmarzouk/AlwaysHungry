@@ -90,7 +90,23 @@ class SignUpActivity : AppCompatActivity() {
 
 
 
-                            db.collection("users").document(user.uid).collection("items").document().set("" to "")
+                            db.collection("users").document(user.uid)
+                                .collection("items").document("meat")
+                                .set("" to "")
+
+                            db.collection("users").document(user.uid)
+                                .collection("items").document("vegetables")
+                                .set("" to "")
+
+                            db.collection("users").document(user.uid)
+                                .collection("items").document("dairy")
+                                .set("" to "")
+
+                            db.collection("users").document(user.uid)
+                                .collection("items").document("other")
+                                .set("" to "")
+
+
 
 
 
