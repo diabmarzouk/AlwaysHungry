@@ -1,7 +1,6 @@
 package com.cmpt362.alwayshungry
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,13 +36,7 @@ class itemsFragment : Fragment() {
 
         println("debug: Hello items")
 
-        db.collection("users").document(user!!.uid).collection("items").document("meat").get().addOnSuccessListener { document ->
-            if(document != null){
-                Log.d("Meats", "${document.data}")
-            }else{
-                Log.d("Error:", "Does not exist")
-            }
-        }
+        db.collection("users").document(user!!.uid).collection("items")
 //
 
 //        database.child("users").child(user!!.uid).child("items").get().addOnSuccessListener {
