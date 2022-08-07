@@ -527,6 +527,78 @@ class addFragment : Fragment(){
                                         .update("Asparagus", FieldValue.arrayUnion(asparagus))
 
                                 }
+                                else if (items.selectedItem.toString() == "Avacado") {
+                                    var avacado = mutableMapOf<String, String>()
+
+                                    avacado["Quantity"] = amountEditText.text.toString()
+                                    avacado["Unit"] = unitSpinner.selectedItem.toString()
+                                    avacado["Date"] = dialogText.text.toString()
+
+                                    db.collection("users").document(user!!.uid)
+                                        .collection("items").document("Vegetables")
+                                        .update("Avacado", FieldValue.arrayUnion(avacado))
+
+                                }
+                                else if (items.selectedItem.toString() == "Beet") {
+                                    var beet = mutableMapOf<String, String>()
+
+                                    beet["Quantity"] = amountEditText.text.toString()
+                                    beet["Unit"] = unitSpinner.selectedItem.toString()
+                                    beet["Date"] = dialogText.text.toString()
+
+                                    db.collection("users").document(user!!.uid)
+                                        .collection("items").document("Vegetables")
+                                        .update("Beet", FieldValue.arrayUnion(beet))
+
+                                }
+                                else if (items.selectedItem.toString() == "Broccoli") {
+                                    var broccoli = mutableMapOf<String, String>()
+
+                                    broccoli["Quantity"] = amountEditText.text.toString()
+                                    broccoli["Unit"] = unitSpinner.selectedItem.toString()
+                                    broccoli["Date"] = dialogText.text.toString()
+
+                                    db.collection("users").document(user!!.uid)
+                                        .collection("items").document("Vegetables")
+                                        .update("Broccoli", FieldValue.arrayUnion(broccoli))
+
+                                }
+                                else if (items.selectedItem.toString() == "Brussels Sprouts") {
+                                    var brussel = mutableMapOf<String, String>()
+
+                                    brussel["Quantity"] = amountEditText.text.toString()
+                                    brussel["Unit"] = unitSpinner.selectedItem.toString()
+                                    brussel["Date"] = dialogText.text.toString()
+
+                                    db.collection("users").document(user!!.uid)
+                                        .collection("items").document("Vegetables")
+                                        .update("Brussels", FieldValue.arrayUnion(brussel))
+
+                                }
+                                else if (items.selectedItem.toString() == "Cabbage") {
+                                    var cabbage = mutableMapOf<String, String>()
+
+                                    cabbage["Quantity"] = amountEditText.text.toString()
+                                    cabbage["Unit"] = unitSpinner.selectedItem.toString()
+                                    cabbage["Date"] = dialogText.text.toString()
+
+                                    db.collection("users").document(user!!.uid)
+                                        .collection("items").document("Vegetables")
+                                        .update("Cabbage", FieldValue.arrayUnion(cabbage))
+
+                                }
+                                else if (items.selectedItem.toString() == "Carrot") {
+                                    var carrot = mutableMapOf<String, String>()
+
+                                    carrot["Quantity"] = amountEditText.text.toString()
+                                    carrot["Unit"] = unitSpinner.selectedItem.toString()
+                                    carrot["Date"] = dialogText.text.toString()
+
+                                    db.collection("users").document(user!!.uid)
+                                        .collection("items").document("Vegetables")
+                                        .update("Carrot", FieldValue.arrayUnion(carrot))
+
+                                }
                             } else if (categorySpinner.selectedItem.toString() == "Dairy") {
                                 //do dairy
                                  if (items.selectedItem.toString() == "Milk") {
