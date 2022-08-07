@@ -46,8 +46,6 @@ class addFragment : Fragment(){
     private lateinit var unitSpinner :Spinner
     private lateinit var dateText :TextView
     private lateinit var addItemBtn :Button
-
-
     private lateinit var authObj: FirebaseAuth
 
 
@@ -597,6 +595,66 @@ class addFragment : Fragment(){
                                     db.collection("users").document(user!!.uid)
                                         .collection("items").document("Vegetables")
                                         .update("Carrot", FieldValue.arrayUnion(carrot))
+
+                                }
+                                else if (items.selectedItem.toString() == "Cauliflower") {
+                                    var cauli = mutableMapOf<String, String>()
+
+                                    cauli["Quantity"] = amountEditText.text.toString()
+                                    cauli["Unit"] = unitSpinner.selectedItem.toString()
+                                    cauli["Date"] = dialogText.text.toString()
+
+                                    db.collection("users").document(user!!.uid)
+                                        .collection("items").document("Vegetables")
+                                        .update("Cauliflower", FieldValue.arrayUnion(cauli))
+
+                                }
+                                else if (items.selectedItem.toString() == "Eggplant") {
+                                    var eggplant = mutableMapOf<String, String>()
+
+                                    eggplant["Quantity"] = amountEditText.text.toString()
+                                    eggplant["Unit"] = unitSpinner.selectedItem.toString()
+                                    eggplant["Date"] = dialogText.text.toString()
+
+                                    db.collection("users").document(user!!.uid)
+                                        .collection("items").document("Vegetables")
+                                        .update("Eggplant", FieldValue.arrayUnion(eggplant))
+
+                                }
+                                else if (items.selectedItem.toString() == "Garlic") {
+                                    var garlic = mutableMapOf<String, String>()
+
+                                    garlic["Quantity"] = amountEditText.text.toString()
+                                    garlic["Unit"] = unitSpinner.selectedItem.toString()
+                                    garlic["Date"] = dialogText.text.toString()
+
+                                    db.collection("users").document(user!!.uid)
+                                        .collection("items").document("Vegetables")
+                                        .update("Garlic", FieldValue.arrayUnion(garlic))
+
+                                }
+                                else if (items.selectedItem.toString() == "Tomatoes") {
+                                    var tomatoe = mutableMapOf<String, String>()
+
+                                    tomatoe["Quantity"] = amountEditText.text.toString()
+                                    tomatoe["Unit"] = unitSpinner.selectedItem.toString()
+                                    tomatoe["Date"] = dialogText.text.toString()
+
+                                    db.collection("users").document(user!!.uid)
+                                        .collection("items").document("Vegetables")
+                                        .update("Tomatoes", FieldValue.arrayUnion(tomatoe))
+
+                                }
+                                else if (items.selectedItem.toString() == "Potatoes") {
+                                    var potato = mutableMapOf<String, String>()
+
+                                    potato["Quantity"] = amountEditText.text.toString()
+                                    potato["Unit"] = unitSpinner.selectedItem.toString()
+                                    potato["Date"] = dialogText.text.toString()
+
+                                    db.collection("users").document(user!!.uid)
+                                        .collection("items").document("Vegetables")
+                                        .update("Potatoes", FieldValue.arrayUnion(potato))
 
                                 }
                             } else if (categorySpinner.selectedItem.toString() == "Dairy") {
