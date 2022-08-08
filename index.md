@@ -4,10 +4,14 @@ Ever wonder about what to make for lunch or dinner? You check in your fridge and
 
 ### Our team
 
-Hayato Koyama - hka137@sfu.ca 
+Hayato Koyama - hka137@sfu.ca
+
 Sadaf Ahmadi - Saa142@sfu.ca 
+
 Mehreen Uzma - smu3@sfu.ca 
+
 Risa Kawagoe - rkawagoe@sfu.ca 
+
 Omar Diabmarzouk - odiabmar@sfu.ca
 
 You can see our [source code on GitHub](https://github.com/diabmarzouk/AlwaysHungry).
