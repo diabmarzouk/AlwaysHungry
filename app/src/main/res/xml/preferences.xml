@@ -11,13 +11,13 @@
 
 <!--            />-->
         <EditTextPreference
-            android:title="e-mail"
-            android:summary="change email"
-            android:key="email_pref"/>
+            android:key="email_pref"
+            android:summary="Change your e-mail"
+            android:title="E-Mail" />
         <EditTextPreference
-            android:title="password"
-            android:summary="change password"
-            android:key="password_pref"/>
+            android:key="password_pref"
+            android:summary="Change your password"
+            android:title="Password" />
 <!--        <EditTextPreference-->
 <!--            android:title="Comments"-->
 <!--            android:summary="Please enter your comments"-->
@@ -38,10 +38,9 @@
         android:title="Additional Settings"
         >
         <Preference
-            android:title="Logout"
             android:key="logoutButton"
-            android:summary="click to logout"
-            />
+            android:summary="Click to logout"
+            android:title="Logout" />
 <!--        <ListPreference-->
 <!--            android:title="Unit Preference"-->
 <!--            android:summary="Select the units"-->

@@ -17,11 +17,18 @@
         <entry key="..\:/CMPT362_Final_Group_Project/app/src/main/res/layout/welcome_preferences.xml" value="0.33" />
         <entry key="..\:/CMPT362_Final_Group_Project/app/src/main/res/layout/welcome_screen.xml" value="0.33" />
         <entry key="..\:/CMPT362_Final_Group_Project/app/src/main/res/menu/settings.xml" value="0.33" />
+<<<<<<< HEAD
         <entry key="..\:/CMPT362_Final_Group_Project/app/src/main/res/xml/preferences.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/risa/Desktop/cmpt362/Group Project/AlwaysHungry/app/src/main/res/layout/activity_recipe_finder.xml" value="0.275" />
         <entry key="..\:/Users/risa/Desktop/cmpt362/Group Project/AlwaysHungry/app/src/main/res/layout/items_fragment.xml" value="0.275" />
         <entry key="..\:/Users/risa/Desktop/cmpt362/Group Project/AlwaysHungry/app/src/main/res/layout/recipe_item.xml" value="0.18229166666666666" />
         <entry key="..\:/Users/risa/Desktop/cmpt362/Group Project/AlwaysHungry/app/src/main/res/layout/recipes_fragment.xml" value="0.18333333333333332" />
+=======
+        <entry key="app/src/main/res/layout/login_activity.xml" value="0.28321685791015627" />
+        <entry key="app/src/main/res/layout/signup_activity.xml" value="0.3875714766822204" />
+        <entry key="app/src/main/res/layout/verify_account_activity.xml" value="0.29635416666666664" />
+        <entry key="app/src/main/res/xml/preferences.xml" value="0.14463019250253292" />
+>>>>>>> 61d3bdcd6d2e05419914d6d855353f15c630a900
       </map>
     </option>
   </component>
@@ -30,5 +37,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.29635416666666664" />
+      </ProjectState>
+    </option>
   </component>
 </project>
