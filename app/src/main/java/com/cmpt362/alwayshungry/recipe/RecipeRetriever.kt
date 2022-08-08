@@ -22,22 +22,10 @@ class RecipeRetriever : AppCompatActivity() {
 
         val appendURL = intent.extras!!.getString("urlParameters")
 //        println("received appendURL: $appendURL")
-
-
-        // EXECUTE printRecipeList() only after getRecipe() has completed
-        val loadRecipes = GlobalScope.launch {
-            getRecipe(appendURL!!)
-        }
-
-        GlobalScope.launch {
-            loadRecipes.join()
-            sleep(2000)
-            println("Recipe retrieved. Now display it.")
-            printRecipeList()
-        }
+        getRecipe(appendURL!!)
     }
 
-    suspend fun getRecipe(appendURL:String) {
+    fun getRecipe(appendURL:String) {
         println("debug: getRecipe()")
 
         val apiURL = "https://tasty.p.rapidapi.com/recipes/list?from=0&size=100$appendURL"
@@ -116,6 +104,7 @@ class RecipeRetriever : AppCompatActivity() {
         }
         println("--------------------------------------------------------------")
 
+        printRecipeList()
     }
 
     private fun isEmpty_Blank_Null(data:String):Boolean {
