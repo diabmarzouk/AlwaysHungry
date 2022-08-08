@@ -104,7 +104,7 @@ class addFragment : Fragment(){
             ) {
                 val value = parent!!.getItemAtPosition(position).toString()
                 if (value == categorylist[0]) {
-                    (view as TextView).setTextColor(Color.GRAY)
+                    (view as? TextView)!!.setTextColor(Color.GRAY)
                 } else {
                     //Other selected
                     if (value == categorylist[4]) {
@@ -115,194 +115,195 @@ class addFragment : Fragment(){
                         myDialog.arguments = bundle
                         myDialog.show(getParentFragmentManager(), "tag")
                     }
+                    else {
+                        if (firstTimeFlag) {
+                            //itemsText
+                            itemsText = TextView(context)
+                            itemsText.layoutParams = LinearLayout.LayoutParams(
+                                ViewGroup.LayoutParams.WRAP_CONTENT,
+                                ViewGroup.LayoutParams.WRAP_CONTENT
+                            )
+                            linearLayout?.addView(itemsText)
+                            //itemsSpinner
+                            items = Spinner(context)
+                            items.layoutParams = LinearLayout.LayoutParams(
+                                ViewGroup.LayoutParams.MATCH_PARENT,
+                                ViewGroup.LayoutParams.WRAP_CONTENT
+                            )
+                            linearLayout?.addView(items)
 
-                    if (firstTimeFlag) {
-                        //itemsText
-                        itemsText = TextView(context)
-                        itemsText.layoutParams = LinearLayout.LayoutParams(
-                            ViewGroup.LayoutParams.WRAP_CONTENT,
-                            ViewGroup.LayoutParams.WRAP_CONTENT
-                        )
-                        linearLayout?.addView(itemsText)
-                        //itemsSpinner
-                        items = Spinner(context)
-                        items.layoutParams = LinearLayout.LayoutParams(
-                            ViewGroup.LayoutParams.MATCH_PARENT,
-                            ViewGroup.LayoutParams.WRAP_CONTENT
-                        )
-                        linearLayout?.addView(items)
+                            //amount Text
+                            amountText = TextView(context)
+                            amountText.layoutParams = LinearLayout.LayoutParams(
+                                ViewGroup.LayoutParams.WRAP_CONTENT,
+                                ViewGroup.LayoutParams.WRAP_CONTENT
+                            )
+                            linearLayout?.addView(amountText)
 
-                        //amount Text
-                        amountText = TextView(context)
-                        amountText.layoutParams = LinearLayout.LayoutParams(
-                            ViewGroup.LayoutParams.WRAP_CONTENT,
-                            ViewGroup.LayoutParams.WRAP_CONTENT
-                        )
-                        linearLayout?.addView(amountText)
+                            //amount Edit Text
+                            amountEditText = EditText(context)
+                            amountEditText.layoutParams = LinearLayout.LayoutParams(
+                                ViewGroup.LayoutParams.MATCH_PARENT,
+                                ViewGroup.LayoutParams.WRAP_CONTENT
+                            )
+                            linearLayout?.addView(amountEditText)
 
-                        //amount Edit Text
-                        amountEditText = EditText(context)
-                        amountEditText.layoutParams = LinearLayout.LayoutParams(
-                            ViewGroup.LayoutParams.MATCH_PARENT,
-                            ViewGroup.LayoutParams.WRAP_CONTENT
-                        )
-                        linearLayout?.addView(amountEditText)
+                            //unit text
+                            unitText = TextView(context)
+                            unitText.layoutParams = LinearLayout.LayoutParams(
+                                ViewGroup.LayoutParams.MATCH_PARENT,
+                                ViewGroup.LayoutParams.WRAP_CONTENT
+                            )
+                            linearLayout?.addView(unitText)
 
-                        //unit text
-                        unitText = TextView(context)
-                        unitText.layoutParams = LinearLayout.LayoutParams(
-                            ViewGroup.LayoutParams.MATCH_PARENT,
-                            ViewGroup.LayoutParams.WRAP_CONTENT
-                        )
-                        linearLayout?.addView(unitText)
+                            //unitSpinner
+                            unitSpinner = Spinner(context)
+                            unitSpinner.layoutParams = LinearLayout.LayoutParams(
+                                ViewGroup.LayoutParams.MATCH_PARENT,
+                                ViewGroup.LayoutParams.WRAP_CONTENT
+                            )
+                            linearLayout?.addView(unitSpinner)
 
-                        //unitSpinner
-                        unitSpinner = Spinner(context)
-                        unitSpinner.layoutParams = LinearLayout.LayoutParams(
-                            ViewGroup.LayoutParams.MATCH_PARENT,
-                            ViewGroup.LayoutParams.WRAP_CONTENT
-                        )
-                        linearLayout?.addView(unitSpinner)
+                            //textview for Date of Purchase
+                            dateText = TextView(context)
+                            dateText.layoutParams = LinearLayout.LayoutParams(
+                                ViewGroup.LayoutParams.MATCH_PARENT,
+                                ViewGroup.LayoutParams.WRAP_CONTENT
+                            )
+                            linearLayout?.addView(dateText)
 
-                        //textview for Date of Purchase
-                        dateText = TextView(context)
-                        dateText.layoutParams = LinearLayout.LayoutParams(
-                            ViewGroup.LayoutParams.MATCH_PARENT,
-                            ViewGroup.LayoutParams.WRAP_CONTENT
-                        )
-                        linearLayout?.addView(dateText)
+                            //dialog text
+                            dialogText = TextView(context)
+                            dialogText.layoutParams = LinearLayout.LayoutParams(
+                                ViewGroup.LayoutParams.MATCH_PARENT,
+                                ViewGroup.LayoutParams.WRAP_CONTENT
+                            )
+                            linearLayout?.addView(dialogText)
 
-                        //dialog text
-                        dialogText = TextView(context)
-                        dialogText.layoutParams = LinearLayout.LayoutParams(
-                            ViewGroup.LayoutParams.MATCH_PARENT,
-                            ViewGroup.LayoutParams.WRAP_CONTENT
-                        )
-                        linearLayout?.addView(dialogText)
+                            //add Item button
+                            addItemBtn = Button(context)
+                            addItemBtn.layoutParams = LinearLayout.LayoutParams(
+                                ViewGroup.LayoutParams.WRAP_CONTENT,
+                                ViewGroup.LayoutParams.WRAP_CONTENT
+                            )
+                            linearLayout?.addView(addItemBtn)
 
-                        //add Item button
-                        addItemBtn = Button(context)
-                        addItemBtn.layoutParams = LinearLayout.LayoutParams(
-                            ViewGroup.LayoutParams.WRAP_CONTENT,
-                            ViewGroup.LayoutParams.WRAP_CONTENT
-                        )
-                        linearLayout?.addView(addItemBtn)
-
-                        firstTimeFlag = false
-                    }
-                    //textview for items
-                    itemsText.setText("Items")
-                    itemsText.setTextColor(
-                        ContextCompat.getColor(
-                            requireContext(),
-                            R.color.myBrown
-                        )
-                    )
-                    itemsText.setTextSize(20F)
-                    itemsText.typeface = Typeface.defaultFromStyle(Typeface.BOLD)
-
-
-                    //adding meat items spinner
-                    if (value == categorylist[1]) {
-                        items.setBackgroundColor(
+                            firstTimeFlag = false
+                        }
+                        //textview for items
+                        itemsText.setText("Items")
+                        itemsText.setTextColor(
                             ContextCompat.getColor(
                                 requireContext(),
-                                R.color.white
+                                R.color.myBrown
                             )
                         )
+                        itemsText.setTextSize(20F)
+                        itemsText.typeface = Typeface.defaultFromStyle(Typeface.BOLD)
 
-                        if (items != null) {
-                            val spinnerAdapter2 = ArrayAdapter(
-                                requireContext(),
-                                android.R.layout.simple_spinner_item,
-                                meatlist
+
+                        //adding meat items spinner
+                        if (value == categorylist[1]) {
+                            items.setBackgroundColor(
+                                ContextCompat.getColor(
+                                    requireContext(),
+                                    R.color.white
+                                )
                             )
-                            items.adapter = spinnerAdapter2
-                        }
 
-                        items?.onItemSelectedListener =
-                            object : AdapterView.OnItemSelectedListener {
-                                override fun onNothingSelected(parent: AdapterView<*>?) {}
-                                override fun onItemSelected(
-                                    parent: AdapterView<*>?,
-                                    view: View?,
-                                    position: Int,
-                                    id: Long
-                                ) {
-                                    val value = parent!!.getItemAtPosition(position).toString()
-                                    if (value == meatlist[0]) {
-                                        (view as TextView).setTextColor(Color.GRAY)
+                            if (items != null) {
+                                val spinnerAdapter2 = ArrayAdapter(
+                                    requireContext(),
+                                    android.R.layout.simple_spinner_item,
+                                    meatlist
+                                )
+                                items.adapter = spinnerAdapter2
+                            }
+
+                            items?.onItemSelectedListener =
+                                object : AdapterView.OnItemSelectedListener {
+                                    override fun onNothingSelected(parent: AdapterView<*>?) {}
+                                    override fun onItemSelected(
+                                        parent: AdapterView<*>?,
+                                        view: View?,
+                                        position: Int,
+                                        id: Long
+                                    ) {
+                                        val value = parent!!.getItemAtPosition(position).toString()
+                                        if (value == meatlist[0]) {
+                                            (view as TextView).setTextColor(Color.GRAY)
+                                        }
                                     }
                                 }
-                            }
-                    }
-                    //adding vegetable items spinner
-                    else if (value == categorylist[2]) {
-                        items.setBackgroundColor(
-                            ContextCompat.getColor(
-                                requireContext(),
-                                R.color.white
-                            )
-                        )
-
-                        if (items != null) {
-                            val spinnerAdapter2 = ArrayAdapter(
-                                requireContext(),
-                                android.R.layout.simple_spinner_item,
-                                vegtablelist
-                            )
-                            items.adapter = spinnerAdapter2
                         }
+                        //adding vegetable items spinner
+                        else if (value == categorylist[2]) {
+                            items.setBackgroundColor(
+                                ContextCompat.getColor(
+                                    requireContext(),
+                                    R.color.white
+                                )
+                            )
 
-                        items?.onItemSelectedListener =
-                            object : AdapterView.OnItemSelectedListener {
-                                override fun onNothingSelected(parent: AdapterView<*>?) {}
-                                override fun onItemSelected(
-                                    parent: AdapterView<*>?,
-                                    view: View?,
-                                    position: Int,
-                                    id: Long
-                                ) {
-                                    val value = parent!!.getItemAtPosition(position).toString()
-                                    if (value == vegtablelist[0]) {
-                                        (view as TextView).setTextColor(Color.GRAY)
+                            if (items != null) {
+                                val spinnerAdapter2 = ArrayAdapter(
+                                    requireContext(),
+                                    android.R.layout.simple_spinner_item,
+                                    vegtablelist
+                                )
+                                items.adapter = spinnerAdapter2
+                            }
+
+                            items?.onItemSelectedListener =
+                                object : AdapterView.OnItemSelectedListener {
+                                    override fun onNothingSelected(parent: AdapterView<*>?) {}
+                                    override fun onItemSelected(
+                                        parent: AdapterView<*>?,
+                                        view: View?,
+                                        position: Int,
+                                        id: Long
+                                    ) {
+                                        val value = parent!!.getItemAtPosition(position).toString()
+                                        if (value == vegtablelist[0]) {
+                                            (view as TextView).setTextColor(Color.GRAY)
+                                        }
                                     }
                                 }
-                            }
-                    }
-                    //adding dairy items spinner
-                    else if (value == categorylist[3]) {
-                        items.setBackgroundColor(
-                            ContextCompat.getColor(
-                                requireContext(),
-                                R.color.white
-                            )
-                        )
-
-                        if (items != null) {
-                            val spinnerAdapter2 = ArrayAdapter(
-                                requireContext(),
-                                android.R.layout.simple_spinner_item,
-                                dairyList
-                            )
-                            items.adapter = spinnerAdapter2
                         }
+                        //adding dairy items spinner
+                        else if (value == categorylist[3]) {
+                            items.setBackgroundColor(
+                                ContextCompat.getColor(
+                                    requireContext(),
+                                    R.color.white
+                                )
+                            )
 
-                        items?.onItemSelectedListener =
-                            object : AdapterView.OnItemSelectedListener {
-                                override fun onNothingSelected(parent: AdapterView<*>?) {}
-                                override fun onItemSelected(
-                                    parent: AdapterView<*>?,
-                                    view: View?,
-                                    position: Int,
-                                    id: Long
-                                ) {
-                                    val value = parent!!.getItemAtPosition(position).toString()
-                                    if (value == dairyList[0]) {
-                                        (view as TextView).setTextColor(Color.GRAY)
+                            if (items != null) {
+                                val spinnerAdapter2 = ArrayAdapter(
+                                    requireContext(),
+                                    android.R.layout.simple_spinner_item,
+                                    dairyList
+                                )
+                                items.adapter = spinnerAdapter2
+                            }
+
+                            items?.onItemSelectedListener =
+                                object : AdapterView.OnItemSelectedListener {
+                                    override fun onNothingSelected(parent: AdapterView<*>?) {}
+                                    override fun onItemSelected(
+                                        parent: AdapterView<*>?,
+                                        view: View?,
+                                        position: Int,
+                                        id: Long
+                                    ) {
+                                        val value = parent!!.getItemAtPosition(position).toString()
+                                        if (value == dairyList[0]) {
+                                            (view as TextView).setTextColor(Color.GRAY)
+                                        }
                                     }
                                 }
-                            }
+                        }
                     }
 
                     //textview
@@ -399,6 +400,7 @@ class addFragment : Fragment(){
                         }
 
                     })
+
 
                     //add Item button
                     addItemBtn.text = "Add Item"
