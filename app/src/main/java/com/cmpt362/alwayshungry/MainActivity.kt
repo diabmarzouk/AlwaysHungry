@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.widget.Button
 import android.widget.TextView
+import com.cmpt362.alwayshungry.auth.LoginActivity
 import com.cmpt362.alwayshungry.auth.SignUpActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -41,8 +42,14 @@ class MainActivity : AppCompatActivity() {
 
         }else{
             // Launch intent to go straight to the fragment tab page
-            val intent = Intent(this, smartFridgeManager::class.java)
-            startActivity(intent)
+            if (currUser.isEmailVerified){
+                val intent = Intent(this, smartFridgeManager::class.java)
+                startActivity(intent)
+            }else{
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+            }
+
         }
 
         startBtn.setOnClickListener{

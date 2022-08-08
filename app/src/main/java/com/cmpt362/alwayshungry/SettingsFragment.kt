@@ -82,6 +82,9 @@ class SettingsFragment : PreferenceFragmentCompat(), Preference.OnPreferenceChan
 //            currUser?.updateEmail("${newValue}")
             try {
                 currUser!!.updateEmail("${newValue}")
+                if(currUser != null)
+                    Firebase.auth.updateCurrentUser(currUser)
+
                 println("debug: after updateEmail")
                 Toast.makeText(requireActivity(), "you just update the email  of the currentUser in the DB", Toast.LENGTH_SHORT).show()
             }
@@ -102,6 +105,9 @@ class SettingsFragment : PreferenceFragmentCompat(), Preference.OnPreferenceChan
         passwordPreference.setOnPreferenceChangeListener { preference, newValue ->
             try {
                 currUser?.updatePassword("${newValue}")
+                if(currUser != null)
+                    Firebase.auth.updateCurrentUser(currUser)
+
                 Toast.makeText(requireActivity(), "you just update the password  of the currentUser in the DB", Toast.LENGTH_SHORT).show()
             }
             catch (err:Exception){
@@ -112,7 +118,10 @@ class SettingsFragment : PreferenceFragmentCompat(), Preference.OnPreferenceChan
         }
         logoutButtonPreference.setOnPreferenceClickListener {
             println("debug: you log out")
-            FirebaseAuth.getInstance().signOut();
+            FirebaseAuth.getInstance().signOut()
+//            if (currUser != null) {
+//                Firebase.auth.updateCurrentUser(currUser)
+//            }
             val intent = Intent(requireActivity(), LoginActivity::class.java)
             startActivity(intent)
             true
