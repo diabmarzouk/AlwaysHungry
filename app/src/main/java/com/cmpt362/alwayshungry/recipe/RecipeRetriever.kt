@@ -2,15 +2,11 @@ package com.cmpt362.alwayshungry.recipe
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.SystemClock.sleep
-import android.widget.Toast
-import androidx.annotation.RestrictTo
 import com.cmpt362.alwayshungry.R
 import com.squareup.okhttp.OkHttpClient
 import com.squareup.okhttp.Request
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
 import org.json.JSONObject
 
 class RecipeRetriever : AppCompatActivity() {
@@ -105,6 +101,7 @@ class RecipeRetriever : AppCompatActivity() {
         println("--------------------------------------------------------------")
 
         printRecipeList()
+        TODO("Load ListView here")
     }
 
     private fun isEmpty_Blank_Null(data:String):Boolean {
