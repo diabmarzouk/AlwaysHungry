@@ -58,7 +58,7 @@ class SignUpActivity : AppCompatActivity() {
             displayName = displayNameET.text.toString()
             if(password != conPassword){
                 Toast.makeText(baseContext, "Passwords do not match.",
-                    Toast.LENGTH_SHORT).show()
+                    Toast.LENGTH_LONG).show()
             }else{
                 createAccount(email, password, displayName)
             }
@@ -82,19 +82,34 @@ class SignUpActivity : AppCompatActivity() {
 
         authObj.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
+
                     // Sign in success, update UI with the signed-in user's information
                     authObj.currentUser!!.sendEmailVerification().addOnCompleteListener { task ->
                         Log.d(TAG, "createUserWithEmail:success")
                         val user = authObj.currentUser
                         if (user != null) {
 
+                            val intent = Intent(this, verifyActivity::class.java)
 
+                            db.collection("users").document(user.uid)
+                                .collection("items").document("meat")
+                                .set("" to "")
 
-                            db.collection("users").document(user.uid).collection("items").document().set("" to "")
+                            db.collection("users").document(user.uid)
+                                .collection("items").document("vegetables")
+                                .set("" to "")
 
+                            db.collection("users").document(user.uid)
+                                .collection("items").document("dairy")
+                                .set("" to "")
 
+                            db.collection("users").document(user.uid)
+                                .collection("items").document("other")
+                                .set("" to "")
 
-                            val intent = Intent(this, LoginActivity::class.java)
+                            // Change this intent to launch an activity that asks you to verify your account.
+                            // It will contain a re-send button and a button to return to the sign up page
+
                             startActivity(intent)
                         }
 
@@ -104,7 +119,7 @@ class SignUpActivity : AppCompatActivity() {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "createUserWithEmail:failure", task.exception)
                     Toast.makeText(baseContext, "Authentication failed.",
-                        Toast.LENGTH_SHORT).show()
+                        Toast.LENGTH_LONG).show()
                 }
             }
     }

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Specify anything you would like to see, separated by a comma (eg: Bread,Cheese)"/>
+
+<!--        <EditText-->
+<!--            android:id="@+id/recipeCount"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:inputType="number"-->
+<!--            android:hint="Number of recipes you want to retrieve"/>-->
+
+        <EditText
+            android:id="@+id/searchItems"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:hint="e.g. Bread,Cheese"/>
+
+        <!--        <Button-->
+        <!--            android:id="@+id/getTagsBtn"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="get tags"/>-->
+
+        <!--    dynamically add tags (selectable buttons)    -->
+        <LinearLayout
+            android:id="@+id/tagCloud"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:id="@+id/button1"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:paddingHorizontal="16dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/tag_button_effect"
+                android:textColor="@color/white"
+                android:button="@null"
+                android:buttonTint="@color/white"
+                android:textAlignment="center"
+                android:tag="5_ingredients_or_less"
+                android:text="5 ingredients or less" />
+            <CheckBox
+                android:id="@+id/button5"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:paddingHorizontal="16dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/tag_button_effect"
+                android:textColor="@color/white"
+                android:button="@null"
+                android:buttonTint="@color/white"
+                android:textAlignment="center"
+                android:tag="chinese"
+                android:text="Chinese" />
+            <CheckBox
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:paddingHorizontal="16dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/tag_button_effect"
+                android:textColor="@color/white"
+                android:button="@null"
+                android:buttonTint="@color/white"
+                android:textAlignment="center"
+                android:tag="under_15_minutes"
+                android:text="under 15 minutes" />
+            <CheckBox
+                android:id="@+id/button3"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:paddingHorizontal="16dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/tag_button_effect"
+                android:textColor="@color/white"
+                android:button="@null"
+                android:buttonTint="@color/white"
+                android:textAlignment="center"
+                android:tag="vegetarian"
+                android:text="vegetarian" />
+            <CheckBox
+                android:id="@+id/button4"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:paddingHorizontal="16dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/tag_button_effect"
+                android:textColor="@color/white"
+                android:button="@null"
+                android:buttonTint="@color/white"
+                android:textAlignment="center"
+                android:tag="healthy"
+                android:text="healthy" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/getRecipeBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_gravity="center"
+            android:text="Get Recipe"/>
+
+<!--        <Button-->
+<!--            android:id="@+id/saveRecipeBtn"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:backgroundTint="@color/teal_700"-->
+<!--            android:text="Save Recipe"/>-->
+
+
+
+    </LinearLayout>
+
+</ScrollView>

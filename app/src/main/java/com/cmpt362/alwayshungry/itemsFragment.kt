@@ -1,15 +1,17 @@
 package com.cmpt362.alwayshungry
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.Fragment
+import com.cmpt362.alwayshungry.recipe.RecipeFinder
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 
 
-import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -49,8 +51,14 @@ class itemsFragment : Fragment() {
 //        }
 
 
-
+        // Recipe API related code
+        val findRecipeBtn = root.findViewById<Button>(R.id.findRecipeBtn)
+        findRecipeBtn.setOnClickListener {
+            val intent = Intent(context, RecipeFinder::class.java)
+            startActivity(intent)
+        }
 
         return root
     }
+
 }
