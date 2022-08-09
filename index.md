@@ -32,7 +32,7 @@ Mehreen: Recipe API with Risa( integrate rapid api in the android app, selected 
 ## APK file
 
 View our APK file and test the app yourself. Enjoy! Let us know what you think. 
-https://github.com/diabmarzouk/AlwaysHungry/raw/master/apk/app-debug.apk
+[APK File](https://github.com/diabmarzouk/AlwaysHungry/raw/master/apk/app-debug.apk)
 
 
 ### Thread Design Diagram 
@@ -42,14 +42,15 @@ The diagram diagram can be viewed here: ![Threaded Design Diagram](/threaded_des
 
 ### Video to our Final Project 
 
-The video to our final project can be viewed here: https://www.youtube.com/watch?v=OVkALWObmVg
+The video to our final project can be viewed here: 
 [Final Video](https://www.youtube.com/watch?v=OVkALWObmVg)
 
 
 
 ### Zipped Final Project
 
-To view the entire project, we have created a nice little zipped package for you. It can be viewed at the link here: https://github.com/diabmarzouk/AlwaysHungry/archive/refs/heads/master.zip
+To view the entire project, we have created a nice little zipped package for you. It can be viewed at the link here:
+[Zipped Finak Project](https://github.com/diabmarzouk/AlwaysHungry/archive/refs/heads/master.zip)
 
 
 ### How does our app work?
