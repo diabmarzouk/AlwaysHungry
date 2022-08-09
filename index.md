@@ -1,8 +1,21 @@
-## Welcome to GitHub Pages
+## About
 
-You can use the [editor on GitHub](https://github.com/diabmarzouk/AlwaysHungry.github.io/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+Ever wonder about what to make for lunch or dinner? You check in your fridge and find nothing that sparks you. Do not worry, our app has got you covered! Just enter in the items currently in your fridge and our app will magically produce a list of recipes you can make! You can also include items you just purchased and our database will store that information for a later use. 
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Our team
+
+Hayato Koyama - hka137@sfu.ca
+
+Sadaf Ahmadi - Saa142@sfu.ca 
+
+Mehreen Uzma - smu3@sfu.ca 
+
+Risa Kawagoe - rkawagoe@sfu.ca 
+
+Omar Diabmarzouk - odiabmar@sfu.ca
+
+You can see our [source code on GitHub](https://github.com/diabmarzouk/AlwaysHungry).
+There you can also see an APK where you can download and try our app
 
 ### Markdown
 

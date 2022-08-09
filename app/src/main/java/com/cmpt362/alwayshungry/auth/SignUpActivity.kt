@@ -92,6 +92,9 @@ class SignUpActivity : AppCompatActivity() {
                             val intent = Intent(this, verifyActivity::class.java)
 
                             db.collection("users").document(user.uid)
+                                .collection("recipes").document("initalizer").set("" to "")
+
+                            db.collection("users").document(user.uid)
                                 .collection("items").document("meat")
                                 .set("" to "")
 
