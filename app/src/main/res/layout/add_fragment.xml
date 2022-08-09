@@ -21,21 +21,31 @@
         android:background="@color/myBrown"
         android:textAlignment="center"/>
 
-    <TextView
-        android:id="@+id/textView2"
+    <LinearLayout
+        android:id="@+id/inputContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Category"
-        android:textStyle="bold"
-        android:textColor="@color/myBrown"
-        android:textSize="20dp" />
+        android:padding="16dp"
+        android:orientation="vertical">
 
-    <Spinner
-        android:id="@+id/categorySpinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="textStart"
-        android:layout_margin="@dimen/cardview_default_radius"
-        android:background="@color/white"
-        android:padding="5dp"/>
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Category"
+            android:textStyle="bold"
+            android:textColor="@color/myBrown"
+            android:textSize="20dp" />
+
+        <Spinner
+            android:id="@+id/categorySpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="textStart"
+            android:layout_margin="@dimen/cardview_default_radius"
+            android:background="@color/white"
+            android:padding="5dp"/>
+    </LinearLayout>
+
+
 </LinearLayout>

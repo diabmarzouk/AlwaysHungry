@@ -83,7 +83,8 @@ class addFragment : Fragment(){
 
         //category spinner
         categorySpinner = root.findViewById(R.id.categorySpinner)
-        val linearLayout = root.findViewById<LinearLayout>(R.id.constraint)
+//        val linearLayout = root.findViewById<LinearLayout>(R.id.constraint)
+        val linearLayout = root.findViewById<LinearLayout>(R.id.inputContainer)
 
 
         val spinnerAdapter =

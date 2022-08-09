@@ -72,14 +72,7 @@ class RecipeRetriever : AppCompatActivity() {
             val db = Firebase.firestore
             val user = Firebase.auth.currentUser
 
-
-            // count the number of ingredients missing
-//            TODO("get count of missing ingredients")
-//            val ingredients
-
-
             // if recipe id not a collection of recipes add to list of results
-            // and if count of missing ingredients is less than 5
             if(!detail.has("recipes")) {
                 val id = detail.get("id").toString()
                 val name = detail.get("name").toString()
