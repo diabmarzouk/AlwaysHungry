@@ -43,7 +43,7 @@ The diagram diagram can be viewed here: ![Threaded Design Diagram](/threaded_des
 ### Video to our Final Project 
 
 The video to our final project can be viewed here: https://www.youtube.com/watch?v=OVkALWObmVg
-[Final Video](https://link-url-here.org](https://www.youtube.com/watch?v=OVkALWObmVg)
+[Final Video](https://www.youtube.com/watch?v=OVkALWObmVg)
 
 
 
@@ -51,11 +51,6 @@ The video to our final project can be viewed here: https://www.youtube.com/watch
 
 To view the entire project, we have created a nice little zipped package for you. It can be viewed at the link here: https://github.com/diabmarzouk/AlwaysHungry/archive/refs/heads/master.zip
 
-
-
-
-You can see our [source code on GitHub](https://github.com/diabmarzouk/AlwaysHungry).
-There you can also see an APK where you can download and try our app
 
 ### How does our app work?
 
@@ -71,4 +66,8 @@ Lastly is the Recips tab. This is where the user will come to view their selecte
 
 
 ### Support or Contact
-Having trouble with running our app? Check out our [README](https://github.com/diabmarzouk/AlwaysHungry) on our GitHu
+
+Having trouble with running our app? Check out our [README](https://github.com/diabmarzouk/AlwaysHungry) on our GitHub
+
+You can see our [source code on GitHub](https://github.com/diabmarzouk/AlwaysHungry).
+There you can also see an APK where you can download and try our app.
