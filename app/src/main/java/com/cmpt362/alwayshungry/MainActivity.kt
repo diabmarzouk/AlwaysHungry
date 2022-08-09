@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.welcome_screen)
+
         startBtn = findViewById(R.id.startBtn)
 
         authObj = Firebase.auth

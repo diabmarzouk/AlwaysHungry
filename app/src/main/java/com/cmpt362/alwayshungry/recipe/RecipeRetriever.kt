@@ -1,16 +1,18 @@
 package com.cmpt362.alwayshungry.recipe
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.ListView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModel
+import com.cmpt362.alwayshungry.ListViewModel
 import com.cmpt362.alwayshungry.R
 import com.squareup.okhttp.OkHttpClient
 import com.squareup.okhttp.Request
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import org.json.JSONObject
-import java.util.Observer
+import java.util.List.of
 
 class RecipeRetriever : AppCompatActivity() {
     val recipes = ArrayList<Recipe>()
@@ -21,11 +23,18 @@ class RecipeRetriever : AppCompatActivity() {
     lateinit var list_OfRecipies: ArrayList<String>
     lateinit var adapter: ArrayAdapter<*>
 
+    lateinit var myCustomList_ViewModel : ViewModel
+
 
         override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 //        setContentView(R.layout.activity_recipe_retriever)
         setContentView(R.layout.recipielistview) // works
+
+           //setting up view model
+//            myCustomList_ViewModel = ListViewModel.of(this).get(ListViewModel::class.java)
+
+
 
         val appendURL = intent.extras!!.getString("urlParameters")
 //        println("received appendURL: $appendURL")
