@@ -2,19 +2,30 @@ package com.cmpt362.alwayshungry.recipe
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ArrayAdapter
+import android.widget.ListView
 import com.cmpt362.alwayshungry.R
 import com.squareup.okhttp.OkHttpClient
 import com.squareup.okhttp.Request
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import org.json.JSONObject
+import java.util.Observer
 
 class RecipeRetriever : AppCompatActivity() {
     val recipes = ArrayList<Recipe>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+
+    //#1
+    lateinit var listView_OfRecipies: ListView
+    lateinit var list_OfRecipies: ArrayList<String>
+    lateinit var adapter: ArrayAdapter<*>
+
+
+        override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_recipe_retriever)
+//        setContentView(R.layout.activity_recipe_retriever)
+        setContentView(R.layout.recipielistview) // works
 
         val appendURL = intent.extras!!.getString("urlParameters")
 //        println("received appendURL: $appendURL")
@@ -100,8 +111,14 @@ class RecipeRetriever : AppCompatActivity() {
         }
         println("--------------------------------------------------------------")
 
+        println("list of recipes before print: ${recipes.size}")
         printRecipeList()
-        TODO("Load ListView here")
+        println("list of recipes after print: ${recipes.size}")
+//        TODO("Load ListView here")
+
+        loadRecipiestoList()
+        println("after call to load recipes")
+//        println("loadrecipies please: ${loadRecipiestoList()}")
     }
 
     private fun isEmpty_Blank_Null(data:String):Boolean {
@@ -116,5 +133,26 @@ class RecipeRetriever : AppCompatActivity() {
         for(item in recipes) {
             item.printRecipe()
         }
+    }
+
+    private fun loadRecipiestoList(){
+        println("insideloadRecipes")
+        listView_OfRecipies = findViewById(R.id.listView)
+
+        list_OfRecipies = ArrayList()// here origianlly,
+
+        for(recipe_selected in recipes){
+            println("inside loadRecipes loop")
+            list_OfRecipies.add(recipe_selected.toString())
+        }
+        println("list_ofRecipies size: ${list_OfRecipies.size}") // correctly adds items to the array
+        //need to display it in listview
+//        Toast.makeText("list_ofRecipies size: ${list_OfRecipies.size}", Toast.LENGTH_LONG).show
+
+        adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list_OfRecipies)
+        listView_OfRecipies.adapter = adapter
+
+
+        println("end of loadRecipes")
     }
 }
