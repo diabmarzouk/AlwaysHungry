@@ -4,6 +4,9 @@ import android.app.DatePickerDialog
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
+import android.text.InputType
+import android.text.InputType.TYPE_CLASS_NUMBER
+import android.text.InputType.TYPE_NUMBER_FLAG_DECIMAL
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -28,6 +31,7 @@ import kotlin.collections.ArrayList
 class addFragment : Fragment(){
 
     companion object{
+        val otherList = arrayListOf<String>()
          val categorylist =
             arrayListOf("Select from category", "Meat", "Vegetables", "Dairy", "Other")
          lateinit var categorySpinner: Spinner
@@ -57,15 +61,12 @@ class addFragment : Fragment(){
     private val vegtablelist = arrayListOf(
         "Choose a vegetable",
         "Asparagus",
-        "Avocado",
         "Beet",
         "Broccoli",
         "Brussels Sprouts",
         "Cabbage",
         "Carrot",
         "Cauliflower",
-        "Celery",
-        "Corn",
         "Eggplant",
         "Garlic",
         "Tomatoes",
@@ -116,7 +117,6 @@ class addFragment : Fragment(){
                         myDialog.arguments = bundle
                         myDialog.show(getParentFragmentManager(), "tag")
                     }
-                    else {
                         if (firstTimeFlag) {
                             //itemsText
                             itemsText = TextView(context)
@@ -305,7 +305,7 @@ class addFragment : Fragment(){
                                     }
                                 }
                         }
-                    }
+
 
                     //textview
                     amountText.setText("Amount")
@@ -326,6 +326,7 @@ class addFragment : Fragment(){
                         )
                     )
                     amountEditText.setText("1")
+                    amountEditText.inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL
 
                     //textview
                     unitText.setText("Unit")
@@ -426,7 +427,7 @@ class addFragment : Fragment(){
                     addItemBtn.gravity = Gravity.CENTER_HORIZONTAL
                     addItemBtn.gravity = Gravity.CENTER_VERTICAL
                     addItemBtn.setOnClickListener {
-                        if (items.selectedItem == "Choose a meat" || items.selectedItem == "Choose a vegetable" || items.selectedItem == "Choose a dairy" || categorySpinner.selectedItem == "Select from Category") {
+                        if (items.selectedItem == "Choose a meat" || items.selectedItem == "Choose a vegetable" || items.selectedItem == "Choose a dairy" || categorySpinner.selectedItem == "Select from Category"|| dialogText.text == "Click to choose a date") {
                             //ask user to choose them before adding the item
                             Toast.makeText(
                                 requireContext(), "Specify the product please",
@@ -449,8 +450,6 @@ class addFragment : Fragment(){
                                     beef["Unit"] = unitSpinner.selectedItem.toString()
                                     beef["Date"] = dialogText.text.toString()
 
-//                        db.collection("users").document(user!!.uid)
-//                            .collection("items").document("meat").set(hashMapOf("Lamb" to FieldValue.arrayUnion(lamb)))
 
                                     db.collection("users").document(user!!.uid)
                                         .collection("items").document("meat")
@@ -511,8 +510,6 @@ class addFragment : Fragment(){
                                         .collection("items").document("meat")
                                         .update("Shrimp", FieldValue.arrayUnion(shrimp))
 
-                                } else {
-                                    //do other
                                 }
                             } else if (categorySpinner.selectedItem.toString() == "Vegetables") {
                                 //do vegetables
@@ -524,11 +521,11 @@ class addFragment : Fragment(){
                                     asparagus["Date"] = dialogText.text.toString()
 
                                     db.collection("users").document(user!!.uid)
-                                        .collection("items").document("Vegetables")
+                                        .collection("items").document("vegetables")
                                         .update("Asparagus", FieldValue.arrayUnion(asparagus))
 
                                 }
-                                else if (items.selectedItem.toString() == "Avacado") {
+                                else if (items.selectedItem.toString() == "Avocado") {
                                     var avacado = mutableMapOf<String, String>()
 
                                     avacado["Quantity"] = amountEditText.text.toString()
@@ -536,7 +533,7 @@ class addFragment : Fragment(){
                                     avacado["Date"] = dialogText.text.toString()
 
                                     db.collection("users").document(user!!.uid)
-                                        .collection("items").document("Vegetables")
+                                        .collection("items").document("vegetables")
                                         .update("Avacado", FieldValue.arrayUnion(avacado))
 
                                 }
@@ -548,7 +545,7 @@ class addFragment : Fragment(){
                                     beet["Date"] = dialogText.text.toString()
 
                                     db.collection("users").document(user!!.uid)
-                                        .collection("items").document("Vegetables")
+                                        .collection("items").document("vegetables")
                                         .update("Beet", FieldValue.arrayUnion(beet))
 
                                 }
@@ -560,7 +557,7 @@ class addFragment : Fragment(){
                                     broccoli["Date"] = dialogText.text.toString()
 
                                     db.collection("users").document(user!!.uid)
-                                        .collection("items").document("Vegetables")
+                                        .collection("items").document("vegetables")
                                         .update("Broccoli", FieldValue.arrayUnion(broccoli))
 
                                 }
@@ -572,7 +569,7 @@ class addFragment : Fragment(){
                                     brussel["Date"] = dialogText.text.toString()
 
                                     db.collection("users").document(user!!.uid)
-                                        .collection("items").document("Vegetables")
+                                        .collection("items").document("vegetables")
                                         .update("Brussels", FieldValue.arrayUnion(brussel))
 
                                 }
@@ -584,7 +581,7 @@ class addFragment : Fragment(){
                                     cabbage["Date"] = dialogText.text.toString()
 
                                     db.collection("users").document(user!!.uid)
-                                        .collection("items").document("Vegetables")
+                                        .collection("items").document("vegetables")
                                         .update("Cabbage", FieldValue.arrayUnion(cabbage))
 
                                 }
@@ -596,7 +593,7 @@ class addFragment : Fragment(){
                                     carrot["Date"] = dialogText.text.toString()
 
                                     db.collection("users").document(user!!.uid)
-                                        .collection("items").document("Vegetables")
+                                        .collection("items").document("vegetables")
                                         .update("Carrot", FieldValue.arrayUnion(carrot))
 
                                 }
@@ -608,7 +605,7 @@ class addFragment : Fragment(){
                                     cauli["Date"] = dialogText.text.toString()
 
                                     db.collection("users").document(user!!.uid)
-                                        .collection("items").document("Vegetables")
+                                        .collection("items").document("vegetables")
                                         .update("Cauliflower", FieldValue.arrayUnion(cauli))
 
                                 }
@@ -620,7 +617,7 @@ class addFragment : Fragment(){
                                     eggplant["Date"] = dialogText.text.toString()
 
                                     db.collection("users").document(user!!.uid)
-                                        .collection("items").document("Vegetables")
+                                        .collection("items").document("vegetables")
                                         .update("Eggplant", FieldValue.arrayUnion(eggplant))
 
                                 }
@@ -632,7 +629,7 @@ class addFragment : Fragment(){
                                     garlic["Date"] = dialogText.text.toString()
 
                                     db.collection("users").document(user!!.uid)
-                                        .collection("items").document("Vegetables")
+                                        .collection("items").document("vegetables")
                                         .update("Garlic", FieldValue.arrayUnion(garlic))
 
                                 }
@@ -644,7 +641,7 @@ class addFragment : Fragment(){
                                     tomatoe["Date"] = dialogText.text.toString()
 
                                     db.collection("users").document(user!!.uid)
-                                        .collection("items").document("Vegetables")
+                                        .collection("items").document("vegetables")
                                         .update("Tomatoes", FieldValue.arrayUnion(tomatoe))
 
                                 }
@@ -656,7 +653,7 @@ class addFragment : Fragment(){
                                     potato["Date"] = dialogText.text.toString()
 
                                     db.collection("users").document(user!!.uid)
-                                        .collection("items").document("Vegetables")
+                                        .collection("items").document("vegetables")
                                         .update("Potatoes", FieldValue.arrayUnion(potato))
 
                                 }
@@ -670,7 +667,7 @@ class addFragment : Fragment(){
                                      milk["Date"] = dialogText.text.toString()
 
                                     db.collection("users").document(user!!.uid)
-                                        .collection("items").document("Dairy")
+                                        .collection("items").document("dairy")
                                         .update("Milk", FieldValue.arrayUnion(milk))
 
                                 }
@@ -682,7 +679,7 @@ class addFragment : Fragment(){
                                      butter["Date"] = dialogText.text.toString()
 
                                      db.collection("users").document(user!!.uid)
-                                         .collection("items").document("Dairy")
+                                         .collection("items").document("dairy")
                                          .update("Butter", FieldValue.arrayUnion(butter))
 
                                  }
@@ -694,7 +691,7 @@ class addFragment : Fragment(){
                                      cheese["Date"] = dialogText.text.toString()
 
                                      db.collection("users").document(user!!.uid)
-                                         .collection("items").document("Dairy")
+                                         .collection("items").document("dairy")
                                          .update("Cheese", FieldValue.arrayUnion(cheese))
 
                                  }
@@ -706,7 +703,7 @@ class addFragment : Fragment(){
                                      yogurt["Date"] = dialogText.text.toString()
 
                                     db.collection("users").document(user!!.uid)
-                                        .collection("items").document("Dairy")
+                                        .collection("items").document("dairy")
                                         .update("yogurt", FieldValue.arrayUnion(yogurt))
 
                                 }
@@ -718,7 +715,7 @@ class addFragment : Fragment(){
                                      cream["Date"] = dialogText.text.toString()
 
                                      db.collection("users").document(user!!.uid)
-                                         .collection("items").document("Dairy")
+                                         .collection("items").document("dairy")
                                          .update("cream", FieldValue.arrayUnion(cream))
 
                                  }
@@ -730,13 +727,25 @@ class addFragment : Fragment(){
                                      whey["Date"] = dialogText.text.toString()
 
                                      db.collection("users").document(user!!.uid)
-                                         .collection("items").document("Dairy")
+                                         .collection("items").document("dairy")
                                          .update("whey", FieldValue.arrayUnion(whey))
 
                                  }
-                            } else {
+                            } else if (categorySpinner.selectedItem.toString() == "Other") {
                                 //do other
-                            }
+                                    var name= items.selectedItem.toString()
+                                    var other = mutableMapOf<String, String>()
+
+                                other["name"]= name
+                                other["Quantity"] = amountEditText.text.toString()
+                                other["Unit"] = unitSpinner.selectedItem.toString()
+                                other["Date"] = dialogText.text.toString()
+
+                                    db.collection("users").document(user!!.uid)
+                                        .collection("items").document("other")
+                                        .update("Other", FieldValue.arrayUnion(other))
+
+                                }
 
 
                             Toast.makeText(
@@ -744,9 +753,7 @@ class addFragment : Fragment(){
                                 Toast.LENGTH_SHORT
                             ).show()
                         }
-
                     }
-
                 }
             }
         }

@@ -4,16 +4,12 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
 import android.content.DialogInterface
-import android.graphics.Color
 import android.os.Bundle
-import android.text.method.DigitsKeyListener
-import android.view.View
 import android.widget.*
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import com.cmpt362.alwayshungry.R
 import com.cmpt362.alwayshungry.addFragment
-import com.cmpt362.alwayshungry.addFragment.Companion.categorylist
+import com.cmpt362.alwayshungry.addFragment.Companion.otherList
 
 class MyDialog: DialogFragment(), DialogInterface.OnClickListener {
     private lateinit var myEditbox: EditText
@@ -24,7 +20,6 @@ class MyDialog: DialogFragment(), DialogInterface.OnClickListener {
         const val Items_DIALOG = 2
         var otherCategory =""
         var otherItem =""
-
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -37,7 +32,7 @@ class MyDialog: DialogFragment(), DialogInterface.OnClickListener {
             myEditbox = view.findViewById<EditText>(R.id.myEdittext)
             val builder = AlertDialog.Builder(requireActivity())
             builder.setView(view)
-            builder.setTitle("Select a Category")
+            builder.setTitle("What's The Item?")
             builder.setPositiveButton("Save", this)
             builder.setNegativeButton("Cancel", this)
             dialog = builder.create()
@@ -61,43 +56,43 @@ class MyDialog: DialogFragment(), DialogInterface.OnClickListener {
     override fun onClick(dialog: DialogInterface?, item: Int) {
         if(item == DialogInterface.BUTTON_POSITIVE) {
             if( myDialogId == Category_DIALOG) {
-                Toast.makeText(requireActivity(), "New Category Saved", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireActivity(), "New Item Saved", Toast.LENGTH_SHORT).show()
                 otherCategory = myEditbox.text.toString()
-                categorylist.add(0, otherCategory)
+                otherList.add(0, otherCategory)
                 val spinnerAdapter =
-                    ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, categorylist)
+                    ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, otherList)
                 spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                addFragment.categorySpinner.adapter = spinnerAdapter
+                addFragment.items.adapter = spinnerAdapter
 
                 //update items spinner
-                val myItem = arrayListOf("Choose an item for this Category","Others")
-                val spinnerAdapter2 = ArrayAdapter(
-                    requireContext(),
-                    android.R.layout.simple_spinner_item,
-                    myItem
-                )
-                addFragment.items.adapter = spinnerAdapter2
-                addFragment.items.setBackgroundColor(
-                    ContextCompat.getColor(
-                        requireContext(),
-                        R.color.white
-                    )
-                )
-                addFragment.items?.onItemSelectedListener =
-                    object : AdapterView.OnItemSelectedListener {
-                        override fun onNothingSelected(parent: AdapterView<*>?) {}
-                        override fun onItemSelected(
-                            parent: AdapterView<*>?,
-                            view: View?,
-                            position: Int,
-                            id: Long
-                        ) {
-                            val value = parent!!.getItemAtPosition(position).toString()
-                            if (value ==myItem[0]) {
-                                (view as TextView).setTextColor(Color.GRAY)
-                            }
-                        }
-                    }
+//                val myItem = arrayListOf("Choose an item for this Category","Others")
+//                val spinnerAdapter2 = ArrayAdapter(
+//                    requireContext(),
+//                    android.R.layout.simple_spinner_item,
+//                    myItem
+//                )
+//                addFragment.items.adapter = spinnerAdapter2
+//                addFragment.items.setBackgroundColor(
+//                    ContextCompat.getColor(
+//                        requireContext(),
+//                        R.color.white
+//                    )
+//                )
+//                addFragment.items?.onItemSelectedListener =
+//                    object : AdapterView.OnItemSelectedListener {
+//                        override fun onNothingSelected(parent: AdapterView<*>?) {}
+//                        override fun onItemSelected(
+//                            parent: AdapterView<*>?,
+//                            view: View?,
+//                            position: Int,
+//                            id: Long
+//                        ) {
+//                            val value = parent!!.getItemAtPosition(position).toString()
+//                            if (value ==myItem[0]) {
+//                                (view as TextView).setTextColor(Color.GRAY)
+//                            }
+//                        }
+//                    }
 
             }
             else if( myDialogId == Items_DIALOG) {

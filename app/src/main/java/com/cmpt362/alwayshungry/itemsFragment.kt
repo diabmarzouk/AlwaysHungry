@@ -38,6 +38,9 @@ class itemsFragment : Fragment() {
     private lateinit var dairyListView: ListView
     var dairyList = arrayListOf<String>()
 
+    private lateinit var otherListView: ListView
+    var otherList = arrayListOf<String>()
+
 
 
 
@@ -57,12 +60,13 @@ class itemsFragment : Fragment() {
         meatListView = root.findViewById(R.id.meatListView)
         vegetablesListView = root.findViewById(R.id.vegetablesListView)
         dairyListView = root.findViewById(R.id.dairyListView)
+        otherListView = root.findViewById(R.id.otherListView)
+
 
         db.collection("users").document(user!!.uid).collection("items").document("meat").get().addOnSuccessListener { document ->
             if(document != null){
                 Log.d("Meats", "${document.data}")
                 if(document.data?.get("Pork") != null){
-                    println("debug: we have pork ${document.data?.get("Pork")}")
                     var data = document.data?.get("Pork").toString()
                     var amount = data.substringAfter("Quantity=").substringBefore(", Unit")
                     var unit = data.substringAfter("Quantity=$amount, Unit=").substringBefore(", Date")
@@ -299,10 +303,25 @@ class itemsFragment : Fragment() {
             }
         }
 
+        //other
+        db.collection("users").document(user!!.uid).collection("items").document("other").get().addOnSuccessListener { document ->
+            if(document != null){
+                    var data = document.data?.get("Other").toString()
+                println("debug: data is $data")
+                    var name= data.substringAfter("name=").substringBefore(", Quantity")
+                    var amount = data.substringAfter("Quantity=").substringBefore(", Unit")
+                    var unit = data.substringAfter("Quantity=$amount, Unit=").substringBefore(", Date")
+                    var date = data.substringAfter("Date=").substringBefore("}]")
+                    var creamString = "$name: $amount $unit purchased at $date"
+                    otherList.add(creamString)
 
+                val arrayAdapter = ArrayAdapter<String>(requireContext(),android.R.layout.simple_list_item_1, android.R.id.text1,otherList)
+                otherListView.adapter = arrayAdapter
 
-
-
+            }else{
+                Log.d("Error:", "Does not exist")
+            }
+        }
 
         // Recipe API related code
         val findRecipeBtn = root.findViewById<Button>(R.id.findRecipeBtn)
@@ -310,10 +329,6 @@ class itemsFragment : Fragment() {
             val intent = Intent(context, RecipeFinder::class.java)
             startActivity(intent)
         }
-
-
-
-
 
         return root
     }
