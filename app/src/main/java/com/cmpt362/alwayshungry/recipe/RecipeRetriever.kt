@@ -2,7 +2,13 @@ package com.cmpt362.alwayshungry.recipe
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.Toast
 import com.cmpt362.alwayshungry.R
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.QuerySnapshot
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.squareup.okhttp.OkHttpClient
 import com.squareup.okhttp.Request
 import kotlinx.coroutines.GlobalScope
@@ -56,19 +62,26 @@ class RecipeRetriever : AppCompatActivity() {
         val dataArray = jsonObject.getJSONArray("results")
         println("*** Number of recipes retrieved: ${dataArray.length()}")
         println("Recipes ------------------------------------------------------")
+
+        val db = Firebase.firestore
+        val user = Firebase.auth.currentUser
+
         for(i in 0 until dataArray.length()) {
             val detail = dataArray.getJSONObject(i)
-            val id = detail.get("id").toString()
-            val name = detail.get("name").toString()
-            val description = detail.get("description").toString()
 
-            println("  ${i+1}. $name [$id]")
-            if(!isEmpty_Blank_Null(description)) {
-                println("      >> $description")
-            }
+
+            // count the number of ingredients missing
+//            TODO("get count of missing ingredients")
+
 
             // if recipe id not a collection of recipes add to list of results
+            // and if count of missing ingredients is less than 5
             if(!detail.has("recipes")) {
+                val id = detail.get("id").toString()
+                val name = detail.get("name").toString()
+                println("  ${i+1}. $name [$id]")
+
+
                 // check thumbnail
                 var thumbnailEnabled = false
                 var thumbnailURL = ""
@@ -82,8 +95,20 @@ class RecipeRetriever : AppCompatActivity() {
                 }
 
                 // check if already saved in database as favorite recipe
-//                TODO("check if already saved in database as favorite recipe")
                 var saved = false
+                if (user != null) {
+                    val recipeReference = db.collection("users").document(user.uid).collection("recipes").document(id)
+                    recipeReference.get().addOnCompleteListener { task ->
+                        if(task.isSuccessful) {
+                            val document = task.result
+                            if(document != null) {
+                                if(document.exists())
+                                println("debug: recipe($id) has already been saved to database")
+                                saved = true
+                            }
+                        }
+                    }
+                }
 
 
                 // create new Recipe instance
@@ -92,16 +117,23 @@ class RecipeRetriever : AppCompatActivity() {
 
                 // append to ListArray<Recipe> for the ListView and pass to list adapter
                 recipes.add(recipe)
-            }else {
-                println("COLLECTION OF RECIPES ** not to be added to list\n\n\n")// debug
-                // do not include in list A.K.A do nothing here, just ignore this recipe
             }
 
         }
         println("--------------------------------------------------------------")
 
         printRecipeList()
-        TODO("Load ListView here")
+//        TODO("Load ListView here")
+
+        // after UI updated with recipes
+        val saveRecipeBtn = findViewById<Button>(R.id.saveRecipeBtn)
+        saveRecipeBtn.setOnClickListener {
+            for(i in 0 until recipes.size) {
+                if(i%10 == 0) {
+                    saveRecipe(recipes[i])
+                }
+            }
+        }
     }
 
     private fun isEmpty_Blank_Null(data:String):Boolean {
@@ -115,6 +147,46 @@ class RecipeRetriever : AppCompatActivity() {
         println("${recipes.size} recipes in the list")
         for(item in recipes) {
             item.printRecipe()
+        }
+    }
+
+    // save recipe to the firebase
+    private fun saveRecipe(recipe:Recipe) {
+        if(!recipe.saved) {
+            val db = Firebase.firestore
+            val user = Firebase.auth.currentUser
+
+            // create map object
+            val recipeMapObj = mutableMapOf<String, String>()
+            recipeMapObj["recipe_id"] = recipe.id
+            recipeMapObj["recipe_name"] = recipe.name
+            recipeMapObj["recipe_thumbnail_enabled"] = if(recipe.thumbnailEnabled) {"true"} else {"false"}
+            recipeMapObj["recipe_thumbnail_url"] = recipe.thumbnailURL
+            recipeMapObj["recipe_saved"] = "true"
+
+
+            // save new recipe to recipes collection in firebase
+            if (user != null) {
+                db.collection("users").document(user.uid)
+                    .collection("recipes").document(recipe.id)
+                    .set(recipeMapObj)
+            }
+        }
+    }
+
+    // remove saved recipe from firebase
+    private fun removeRecipe(recipe: Recipe) {
+        if(recipe.saved) {
+            val db = Firebase.firestore
+            val user = Firebase.auth.currentUser
+            val recipeID = recipe.id
+
+            // remove saved recipe from recipes collection in firebase
+            val recipeReference = db.collection("users").document(user!!.uid).collection("recipes").document(recipeID)
+            recipeReference.delete().addOnSuccessListener {
+                Toast.makeText(this, "Recipe deleted.", Toast.LENGTH_SHORT).show()
+                // update UI
+            }
         }
     }
 }

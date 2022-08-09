@@ -10,22 +10,20 @@ data class Recipe(
     val thumbnailEnabled:Boolean = false,
     val thumbnailURL:String = "",
     var saved:Boolean = false,
-
-    var searched: String = ""
 ) {
     fun printRecipe() {
         println("RECIPE DETAILS ----------------------------------------")
         println("id: $id")
         println("name: $name")
         if(thumbnailEnabled) {
-            println("thumbnail url: $thumbnailURL")
+            println("thumbnail: $thumbnailURL")
         }else {
-            println("NO THUMBNAIL")
+            println("thumbnail: N/A")
         }
         if(saved) {
-            println("SAVED")
+            println("saved: YES")
         }else {
-            println("NOT SAVED")
+            println("saved: NO")
         }
         println("-------------------------------------------------------\n\n\n")
     }

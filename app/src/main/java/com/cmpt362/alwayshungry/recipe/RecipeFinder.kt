@@ -30,6 +30,11 @@ class RecipeFinder : AppCompatActivity() {
             startActivity(recipeRetriever)
         }
 
+        val returnBtn = findViewById<Button>(R.id.returnBtn)
+        returnBtn.setOnClickListener {
+            finish()
+        }
+
     }
 
     private fun getTagStringURL(): String {
