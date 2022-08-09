@@ -5,6 +5,14 @@ Ever wonder about what to make for lunch or dinner? You check in your fridge and
 Always Hungry Project Pitch: 
 [Video](https://www.youtube.com/watch?v=b8GIL1Gh6Do )
 
+You can see our [source code on GitHub](https://github.com/diabmarzouk/AlwaysHungry).
+
+
+## APK file
+
+View our APK file and test the app yourself. Enjoy! Let us know what you think. 
+[App APK Here](https://github.com/diabmarzouk/AlwaysHungry/raw/master/apk/app-debug.apk)
+
 
 ### Our team
 
@@ -28,13 +36,6 @@ Risa: main task was backend data operations for recipe API and basic UI for reci
 Omar: Implement login, sign up, and verification for application to allow for cross device usage. This meant we used Firebase authentication and firestore. Implementing the Firestore is vital for our data in the app as that is how we store what we have in the fridge, store our recipes, settings, etc. Created base app with Sadaf and UI design. Also acted as a helping hand to anyone that needed anything + help with implementing database structures across our different parts of the app. Also acted as a helping hand to other members for times they needed help.
 
 Mehreen: Recipe API with Risa( integrate rapid api in the android app, selected recipes from API based on search request, and selected tags, determined what functionalities the tasty api offers, figured out what functions to use for retrieving a list of recipes *without any parameters passed to it, figure out how to pass parameters to function to get a specific list of recipe), Thread Design Diagram (constructed a design that represents the functionality of the app, accurately represented with threads and UI features, using it as a reference when stuck) and Webpage Description (filled in the web page with our pitch, description of how the app works, description of each members workload and required files such as the apk file). 
-
-
-## APK file
-
-View our APK file and test the app yourself. Enjoy! Let us know what you think. 
-[App APK Here](https://github.com/diabmarzouk/AlwaysHungry/raw/master/apk/app-debug.apk)
-
 
 ### Thread Design Diagram 
 
@@ -66,10 +67,3 @@ Next and most importantly is the Items tab. This tab is where the items from the
 
 Lastly is the Recips tab. This is where the user will come to view their selected recipes. n this tab, the users favorited recipes will be populated here, and they can view there favorited recipes and remove them as well. 
 
-
-### Support or Contact
-
-Having trouble with running our app? Check out our [README](https://github.com/diabmarzouk/AlwaysHungry) on our GitHub
-
-You can see our [source code on GitHub](https://github.com/diabmarzouk/AlwaysHungry).
-There you can also see an APK where you can download and try our app.
