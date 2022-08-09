@@ -2,7 +2,8 @@
 
 Ever wonder about what to make for lunch or dinner? You check in your fridge and find nothing that sparks you. Do not worry, our app has got you covered! Just enter in the items currently in your fridge and our app will magically produce a list of recipes you can make! You can also include items you just purchased and we will generate recipes accordingly. 
 
-Always Hungry Project Pitch Video: https://www.youtube.com/watch?v=b8GIL1Gh6Do 
+Always Hungry Project Pitch: 
+[Video](https://www.youtube.com/watch?v=b8GIL1Gh6Do )
 
 
 ### Our team
@@ -50,7 +51,7 @@ The video to our final project can be viewed here:
 ### Zipped Final Project
 
 To view the entire project, we have created a nice little zipped package for you. It can be viewed at the link here:
-[Zipped Finak Project](https://github.com/diabmarzouk/AlwaysHungry/archive/refs/heads/master.zip)
+[Zipped Final Project](https://github.com/diabmarzouk/AlwaysHungry/archive/refs/heads/master.zip)
 
 
 ### How does our app work?
