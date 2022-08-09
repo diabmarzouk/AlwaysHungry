@@ -13,6 +13,7 @@ import com.squareup.okhttp.OkHttpClient
 import com.squareup.okhttp.Request
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 import org.json.JSONObject
 
 class RecipeRetriever : AppCompatActivity() {
@@ -41,7 +42,7 @@ class RecipeRetriever : AppCompatActivity() {
         }
     }
 
-    private fun callRecipeAPI(apiUrl: String) {
+    private suspend fun callRecipeAPI(apiUrl: String) {
         println("debug: callRecipeAPI()")
         val client = OkHttpClient()
 
@@ -63,15 +64,18 @@ class RecipeRetriever : AppCompatActivity() {
         println("*** Number of recipes retrieved: ${dataArray.length()}")
         println("Recipes ------------------------------------------------------")
 
-        val db = Firebase.firestore
-        val user = Firebase.auth.currentUser
+
 
         for(i in 0 until dataArray.length()) {
             val detail = dataArray.getJSONObject(i)
 
+            val db = Firebase.firestore
+            val user = Firebase.auth.currentUser
+
 
             // count the number of ingredients missing
 //            TODO("get count of missing ingredients")
+//            val ingredients
 
 
             // if recipe id not a collection of recipes add to list of results
@@ -79,7 +83,7 @@ class RecipeRetriever : AppCompatActivity() {
             if(!detail.has("recipes")) {
                 val id = detail.get("id").toString()
                 val name = detail.get("name").toString()
-                println("  ${i+1}. $name [$id]")
+//                println("  ${i+1}. $name [$id]")
 
 
                 // check thumbnail
@@ -94,29 +98,48 @@ class RecipeRetriever : AppCompatActivity() {
                     }
                 }
 
+
+
                 // check if already saved in database as favorite recipe
                 var saved = false
-                if (user != null) {
-                    val recipeReference = db.collection("users").document(user.uid).collection("recipes").document(id)
-                    recipeReference.get().addOnCompleteListener { task ->
-                        if(task.isSuccessful) {
-                            val document = task.result
-                            if(document != null) {
-                                if(document.exists())
-                                println("debug: recipe($id) has already been saved to database")
-                                saved = true
+                val coroutine = GlobalScope.launch {
+                    if (user != null) {
+                        val recipeReference = db.collection("users").document(user.uid).collection("recipes").document(id)
+                        recipeReference.get().addOnCompleteListener { task ->
+                            if(task.isSuccessful) {
+                                val document = task.result
+                                if(document != null) {
+                                    if(document.exists()) {
+                                        println("debug: recipe($id) has already been saved to database")
+                                        saved = true
+                                        val recipe = Recipe(id, name, thumbnailEnabled, thumbnailURL, true)
+                                        recipes.add(recipe)
+                                        recipe.printRecipe()
+
+                                    }else {
+                                        val recipe = Recipe(id, name, thumbnailEnabled, thumbnailURL, false)
+                                        recipes.add(recipe)
+                                        recipe.printRecipe()
+                                    }
+                                }
                             }
                         }
                     }
                 }
 
+                coroutine.join()
+
+                println("GETTING SAVED STATUS FINISHED: $saved")
+
 
                 // create new Recipe instance
-                val recipe = Recipe(id, name, thumbnailEnabled, thumbnailURL, saved)
-                recipe.printRecipe() // debug
+//                val recipe = Recipe(id, name, thumbnailEnabled, thumbnailURL, saved)
+//                recipe.printRecipe() // debug
+//                    recipe.printSavedRecipe()
 
                 // append to ListArray<Recipe> for the ListView and pass to list adapter
-                recipes.add(recipe)
+//                recipes.add(recipe)
+
             }
 
         }
