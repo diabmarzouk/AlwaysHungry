@@ -17,34 +17,19 @@ Omar Diabmarzouk - odiabmar@sfu.ca
 You can see our [source code on GitHub](https://github.com/diabmarzouk/AlwaysHungry).
 There you can also see an APK where you can download and try our app
 
-### Markdown
+### How does the "magic" work?
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Firstly, upon the download of the app, the user is prompted to create an account and sign up. This is done through Firebase. User entered their email and firebase authentication sends a verification email, ensuring the email address exists. Once the email verification has been approved, the user must log in with their password and are welcomed into the app. 
 
-```markdown
-Syntax highlighted code block
+Once logged in, the user will see three display tabs: Add, Items and Recipes
 
-# Header 1
-## Header 2
-### Header 3
+The Add tab is where the user will enter the items you have. A drop down menu of categories lets them specify which item they would like to see. From there they get a list of items that are catered based on the category selected. The user is then requested to enter the amount and units of that particular item. Lasly, as mentioned, they can include the purchase date to help us prioritise which food item they should consider making a meal with. Once the user presses the Add Item button, the item will then get added to the database using Firebase.  
 
-- Bulleted
-- List
+Next is the Items tab. This tab is where the items from the database are displayed. Once items from the database are added, it will be shown in the Items section as well.
 
-1. Numbered
-2. List
+Lastly and most importantly is the Recipies tab. This is the place the user wants to be when selecting which recipe to make. In this tab, the users favourited recipes will be populated here, and they can view there favourited recipes and remove them as well.
 
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/diabmarzouk/AlwaysHungry.github.io/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
 
 ### Support or Contact
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+Having trouble with running our app? Check out our [README](https://github.com/diabmarzouk/AlwaysHungry) on our GitHub.
