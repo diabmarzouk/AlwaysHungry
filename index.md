@@ -37,12 +37,13 @@ https://github.com/diabmarzouk/AlwaysHungry/raw/master/apk/app-debug.apk
 
 ### Thread Design Diagram 
 
-The diagram diagram can be viewed here: ![My helpful screenshot](/assets/Better and improved threaded design diagram.pdf)
+The diagram diagram can be viewed here: ![Threaded Design Diagram](/threaded_design_diagram.jpg)
 
 
 ### Video to our Final Project 
 
 The video to our final project can be viewed here: https://www.youtube.com/watch?v=OVkALWObmVg
+[Final Video](https://link-url-here.org](https://www.youtube.com/watch?v=OVkALWObmVg)
 
 
 
